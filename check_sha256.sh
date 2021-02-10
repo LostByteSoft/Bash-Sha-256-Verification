@@ -41,7 +41,7 @@ if [ "$sha256file" = "" ]; then
 	echo "$FILE"
 	echo The ckeck sum calculated is :
 	sha256sum "$FILE" | awk '{print $1}' > "${FILE}.sha256"
-	sha256sum "$FILE"
+	#sha256sum "$FILE"
 	echo -----------------------------------------------------------------------------
 	read -r firstline2<"${FILE}.sha256"
 	export VAR3="$FILE"
