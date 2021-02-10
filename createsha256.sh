@@ -14,10 +14,19 @@ echo  --------------------------------------------------------------------------
 echo "Select a file to hash"
 FILE="$(zenity --file-selection --title="Select a file to hash")"
 
-sha256sum "$FILE"
+	echo -----------------------------------------------------------------------------
+	echo "Your file to check is :"
+	echo ------------------------
+	echo "$FILE"
+	echo The ckeck sum calculated is :
+	sha256sum "$FILE" | awk '{print $1}' > "${FILE}.sha256"
+	sha256sum "$FILE"
+	echo -----------------------------------------------------------------------------
+	echo "  $FILE" >> "${FILE}.sha256"
+	echo You have created a new file with sum, press ENTER key to exit !
 
 echo  -----------------------------------------------------------------------------
-echo Press ENTER key to exit !
+
 read name
 exit
 echo --- End of bash ---
