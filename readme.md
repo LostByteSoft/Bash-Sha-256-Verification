@@ -2,7 +2,11 @@ By LostByteSoft
 
 Bash sha 256 verification help tool
 
-BETA VESION !!! If you want help you're welcome !!
+BETA VESION !!! If you want to help you're welcome !!
+
+I'M WORKING ON A VERSION THAT TAKE THE GOOD LINE TO CHECK THE SHA.
+
+ONLY ONE LINE IS SUPPORTED IN *.sha256 FILE.
 
 
 Things to do !

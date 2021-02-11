@@ -2,11 +2,10 @@ echo --- Start of file ---
 #!/bin/bash
 # cd "$(dirname "$0")"
 # gnome-terminal --geometry 120x50				#won't work
-echo -----------------------------------------------------------------------------
-echo "Check hash sha-256 automaticly"
+echo "Check hash sha-512 automaticly"
 echo "By LostByteSoft"
 echo "Version 2021-02-10"
-echo "sha-256-sum verification, you will select 1 or 2 files"
+echo "sha-512-sum verification, you will select 1 or 2 files"
 echo -----------------------------------------------------------------------------
 
 echo "MANDATORY - Select a file to hash (Could be anything)"
@@ -20,15 +19,11 @@ FILE="$(zenity --file-selection --filename=$HOME/$USER --title="MANDATORY - Sele
 	#echo For debug purpose press a key !
 	#read name
 
-echo -----------------------------------------------------------------------------
-
 # if exist file then load
 # else "no, select a file"
 
-echo -----------------------------------------------------------------------------
-
-echo "OPTIONAL - Select a file with the hash inside (*.sha256)"
-sha256file="$(zenity --file-selection --filename=$HOME/$USER --title="OPTIONAL - Select a file with the hash inside (*.sha256)")"
+echo "OPTIONAL - Select a file with the hash inside (*.sha512)"
+sha512file="$(zenity --file-selection --filename=$HOME/$USER --title="OPTIONAL - Select a file with the hash inside (*.sha512)")"
 
 	export VAR2="$FILE"
 	#echo "$(dirname "${VAR2}")"
@@ -37,7 +32,7 @@ sha256file="$(zenity --file-selection --filename=$HOME/$USER --title="OPTIONAL -
 	#echo For debug purpose press a key !
 	#read name
 
-if [ "$sha256file" = "" ]; then
+if [ "$sha512file" = "" ]; then
 	#echo "Only one file was provided."
 	cd /"$(dirname "${VAR1}")"
 	echo -----------------------------------------------------------------------------
@@ -45,15 +40,15 @@ if [ "$sha256file" = "" ]; then
 	echo ------------------------
 	echo "$FILE"
 	echo The ckeck sum calculated is :
-	sha256sum "$FILE" | awk '{print $1}' > "${FILE}.sha256"
-	#sha256sum "$FILE"
+	sha512sum "$FILE" | awk '{print $1}' > "${FILE}.sha512"
+	#sha512sum "$FILE"
 	echo -----------------------------------------------------------------------------
-	read -r firstline2<"${FILE}.sha256"
+	read -r firstline2<"${FILE}.sha512"
 	export VAR3="$FILE"
 	#echo "$(dirname "${VAR3}")"
 	#echo "$(basename "${VAR3}")"
 	#echo var is a var : "$(dirname "${VAR3}")"
-	echo "$firstline2  $(basename "${VAR3}")" > "${FILE}.sha256"
+	echo "$firstline2  $(basename "${VAR3}")" > "${FILE}.sha512"
 	echo Is writen : "$firstline2  $(basename "${VAR3}")"
 	echo -----------------------------------------------------------------------------
 	echo You have created a new file with sum, press ENTER key to exit !
@@ -64,28 +59,26 @@ else
 	#echo "You have provided two files."
 	cd /"$(dirname "${VAR2}")"
 	echo -----------------------------------------------------------------------------
-	read -r firstline<"$sha256file"
+	read -r firstline<"$sha512file"
 	echo "Your file to check is :"
 	echo ------------------------
 	echo "$FILE"
 	echo The ckeck sum calculated is :
-	sha256sum "$FILE"
+	sha512sum "$FILE"
 	echo ------------------------
-	echo "$sha256file"
+	echo "$sha512file"
 	echo The ckeck sum in file is :
 	echo "$firstline"
 	echo Visually compare !
 	echo  -----------------------------------------------------------------------------
 	echo If you have OK here it is OK !
-	sha256sum -c "$sha256file"
+	sha512sum -c "$sha512file"
 	echo -----------------------------------------------------------------------------
 	echo Press ENTER key to exit !
 	read name
 	exit
 
 fi
-
-echo -----------------------------------------------------------------------------
 
 echo Error 001 - Press ENTER key to exit !
 read name
