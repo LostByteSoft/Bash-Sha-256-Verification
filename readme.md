@@ -1,21 +1,26 @@
-By LostByteSoft
+FREE Linux Bash software by LostByteSoft
 
-Bash sha 256 verification help tool
+No CopyRIGHT or CopyLEFT, i am juste in the CopyCENTER. That not perfect but me neither.
+
+Bash sha 256/512 verification help tool
 
 BETA VESION !!! If you want to help you're welcome !!
 
-I'M WORKING ON A VERSION THAT TAKE THE GOOD LINE TO CHECK THE SHA.
+I'M WORKING ON A VERSION THAT TAKE THE GOOD LINE TO CHECK THE SHA FILE.
 
 ONLY ONE LINE IS SUPPORTED IN *.sha256 FILE.
+
+
 
 
 Things to do !
 
 * auto load *.sha256 file if exist.
-* create a .sha256 file after NEW calculation (create with correct format).
 * select the good hash in file if many is present.
 * maybe an gui.
+* Other check : sha512, crc32 , ...
 * i'm sure there are more to do....
+
 
 
 Easy way or not in bash to verify create and hash a file in sha 256.
@@ -33,25 +38,33 @@ Version 2021-02-10
 * Files and use
 
 Check_sha256.sh
+Check_sha512.sh
 
-THe main software. Will ask for 2 files (one after another, you can only provide one) and compare the hash include in the second specified file.
+The main software. Will ask for 2 files (one after another, or you can only provide one) and compare the hash include in the second specified file. If only one file is provided (the first one) the sh will create an sha256 ou sha512 file.
+
+create_sha256.sh
+create_sha512.sh
+
+Ask for one file to hash and create *.sha256 or *.sha512 file.
 
 testfile.txt
 
-This is the test file to hash. I called this file : 09 F9 key
+This is the test file to hash.
 
-testfile.sha256
+testfile.txt.sha256
 
-In this file there are the pre-calculated hash and the file name. You (if you create this file) must follow the corect format, or correct the file to respect the format. HOW: Is the hash code two (2) spaceS and the name of the file.
+In this file there are the pre-calculated hash and the file name. You (if you create this file) must follow the corect format, or correct the file to respect the format. HOW: Is the hash code plus two (2) spaceS and the name of the file. Only the first line is revelant for now.
 
-Exemple of the first line : 09f9....88c0  testfile.txt
+Exemple of the first line : 0ca160e99aa0e719a4926797292654f9a26bc9591beee21a8ec6f2808616acee  testfile.txt
 
-create_sha256.sh
-
-Will create a file (with the same name of the file hashed) with inside hash and the file name.
+Only the first line is revelant for now.
 
 
-I will drop win soft soon ...
+
+
+
+
+FREE Linux Bash software by LostByteSoft
 
 --- End of readme ---
 

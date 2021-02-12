@@ -1,11 +1,10 @@
 echo --- Start of file ---
 #!/bin/bash
-# cd "$(dirname "$0")"
-# gnome-terminal --geometry 120x50				#won't work
+printf '\033[8;43;132t'		# will resize the window to 132 x 43 characters.
 echo -----------------------------------------------------------------------------
 echo "Check hash sha-256 automaticly"
 echo "By LostByteSoft"
-echo "Version 2021-02-10"
+echo "Version 2021-02-12"
 echo "sha-256-sum verification, you will select 1 or 2 files"
 echo -----------------------------------------------------------------------------
 
@@ -16,7 +15,7 @@ FILE="$(zenity --file-selection --filename=$HOME/$USER --title="MANDATORY - Sele
 	export VAR1="$FILE"
 	#echo "$(dirname "${VAR1}")"
 	#echo "$(basename "${VAR1}")"
-	echo var is a var : "$(dirname "${VAR1}")"
+	#echo var is a var : "$(dirname "${VAR1}")"
 	#echo For debug purpose press a key !
 	#read name
 
@@ -24,11 +23,25 @@ echo ---------------------------------------------------------------------------
 
 # if exist file then load
 # else "no, select a file"
+	#shafile="$FILE".sha256
+	#if [ -f "$shafile" ];
+	#then
+	#echo "shafile exists. "$(dirname "${VAR2}")" "
+	#else
+	#echo "shafile NOT exists"
+	#fi
+	#echo "$file"
+	#echo "$(dirname "${VAR1}")"
+	#echo "$(dirname "${VAR2}")"
+	#echo "$(dirname "${VAR3}")"
+	#echo "shafile = "$shafile""
+	#echo For debug purpose press a key !
+	#read name
 
 echo -----------------------------------------------------------------------------
 
 echo "OPTIONAL - Select a file with the hash inside (*.sha256)"
-sha256file="$(zenity --file-selection --filename=$HOME/$USER --title="OPTIONAL - Select a file with the hash inside (*.sha256)")"
+sha256file="$(zenity --file-selection --filename=$HOME/$USER --file-filter=*.sha256 --title="OPTIONAL - Select a file with the hash inside (*.sha256)")"
 
 	export VAR2="$FILE"
 	#echo "$(dirname "${VAR2}")"
@@ -44,7 +57,7 @@ if [ "$sha256file" = "" ]; then
 	echo "Your file to check is :"
 	echo ------------------------
 	echo "$FILE"
-	echo The ckeck sum calculated is :
+	echo "The ckeck sum calculated is :"
 	sha256sum "$FILE" | awk '{print $1}' > "${FILE}.sha256"
 	#sha256sum "$FILE"
 	echo -----------------------------------------------------------------------------
@@ -56,6 +69,8 @@ if [ "$sha256file" = "" ]; then
 	echo "$firstline2  $(basename "${VAR3}")" > "${FILE}.sha256"
 	echo Is writen : "$firstline2  $(basename "${VAR3}")"
 	echo -----------------------------------------------------------------------------
+	# if the file exist don't create again
+	
 	echo You have created a new file with sum, press ENTER key to exit !
 	read name
 	exit
@@ -68,15 +83,17 @@ else
 	echo "Your file to check is :"
 	echo ------------------------
 	echo "$FILE"
-	echo The ckeck sum calculated is :
+	echo "The ckeck sum calculated is :"
 	sha256sum "$FILE"
+	echo ------------------------
+	echo "Your sha256 file is :"
 	echo ------------------------
 	echo "$sha256file"
 	echo The ckeck sum in file is :
 	echo "$firstline"
 	echo Visually compare !
 	echo  -----------------------------------------------------------------------------
-	echo If you have OK here it is OK !
+	echo "If you have OK here it is OK !"
 	sha256sum -c "$sha256file"
 	echo -----------------------------------------------------------------------------
 	echo Press ENTER key to exit !
