@@ -33,19 +33,25 @@ Version 2021-02-10
 
 ![Screenshot](Picture_6.jpg)
 
+Version 2021-02-14
+
+![Screenshot](Picture_7.jpg)
+
 --------------------------------------------------------------------
 
 * Files and use
 
-Check_sha256.sh
-Check_sha512.sh
+Check_sha256_V1.sh
 
-The main software. Will ask for 2 files (one after another, or you can only provide one) and compare the hash include in the second specified file. If only one file is provided (the first one) the sh will create an sha256 ou sha512 file.
+The main software. Will ask for 2 files, one after another, and compare the hash include in the second specified file.
+
+Check_sha512_V2.sh
+The main software. Will ask for 1 files (and check if hash file exist then autoload OR ask for a second file and compare the hash include in the second specified/automatic file.
 
 create_sha256.sh
 create_sha512.sh
 
-Ask for one file to hash and create *.sha256 or *.sha512 file.
+Ask for one file to hash and create *.sha256 or *.sha512 file. With correct name and formatting.
 
 testfile.txt
 
@@ -60,6 +66,9 @@ Exemple of the first line : 0ca160e99aa0e719a4926797292654f9a26bc9591beee21a8ec6
 Only the first line is revelant for now.
 
 
+create_sha256_folder.sh
+
+	Will create for a specified folder all *.sha256 file.
 
 
 

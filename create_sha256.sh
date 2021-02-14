@@ -1,11 +1,10 @@
-#!/bin/bash
-cd ~/Desktop;
 echo --- Start of file ---
-# gnome-terminal --geometry 120x50				#won't work
-echo "Create hash sha-256 file"
+#!/bin/bash
+printf '\033[8;43;132t'		# will resize the window to 132 x 43 characters.
+echo -----------------------------------------------------------------------------
+echo "sha256sum hash, you will create 1 file"
 echo "By LostByteSoft"
-echo "Version 2021-01-30"
-echo "sha-256-sum hash, you will create 1 files"
+echo "Version 2021-02-14"
 echo  -----------------------------------------------------------------------------
 
 echo "Select a file to hash"
@@ -14,8 +13,8 @@ FILE="$(zenity --file-selection --filename=$HOME/$USER --title="Select a file to
 	cd /"$(dirname "${VAR1}")"
 	echo -----------------------------------------------------------------------------
 	echo "Your file to check is :"
-	echo ------------------------
 	echo "$FILE"
+	echo ------------------------
 	echo The ckeck sum calculated is :
 	sha256sum "$FILE" | awk '{print $1}' > "${FILE}.sha256"
 	echo -----------------------------------------------------------------------------
