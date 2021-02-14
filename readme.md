@@ -12,6 +12,14 @@ I'M WORKING ON A VERSION THAT TAKE THE GOOD LINE TO CHECK THE SHA FILE.
 
 ONLY ONE LINE IS SUPPORTED IN *.sha256 FILE.
 
+Easy way or not in bash to verify create and hash a file in sha 256.
+
+In each file you can replace sha256sum by any check sum you want : crc32, sha-1, ... etc
+
+Version 2021-02-14
+
+![Screenshot](Picture_7.jpg)
+
 --------------------------------------------------------------------
 
 Things to do !
@@ -21,26 +29,6 @@ Things to do !
 * maybe an gui.
 * Other check : sha512, crc32 , ...
 * i'm sure there are more to do....
-
---------------------------------------------------------------------
-
-Easy way or not in bash to verify create and hash a file in sha 256.
-
-In each file you can replace sha256sum by any check sum you want : crc32, sha-1, ... etc
-
---------------------------------------------------------------------
-
-Version 2021-01-29
-
-![Screenshot](Picture_5.jpg)
-
-Version 2021-02-10
-
-![Screenshot](Picture_6.jpg)
-
-Version 2021-02-14
-
-![Screenshot](Picture_7.jpg)
 
 --------------------------------------------------------------------
 
@@ -81,6 +69,18 @@ Only the first line is revelant for now.
 
 
 FREE Linux Bash software by LostByteSoft
+
+--------------------------------------------------------------------
+
+	OLD VERSIONS
+
+Version 2021-01-29
+
+![Screenshot](Picture_5.jpg)
+
+Version 2021-02-10
+
+![Screenshot](Picture_6.jpg)
 
 --------------------------------------------------------------------
 
