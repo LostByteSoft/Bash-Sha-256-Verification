@@ -12,7 +12,6 @@ way="$(zenity --file-selection --title="Choose a directory to hash all file" --f
 echo -----------------------------------------------------------------------------
 
 for i in "$way"/*.*;
-	#do name=`echo "$i" | cut -f1`
 	do name=`echo "$i" `
 	echo name="$name"
 	export VAR="$i"

@@ -10,66 +10,27 @@ echo ---------------------------------------------------------------------------
 echo "MANDATORY - Select a file to hash (Could be anything)"
 file="$(zenity --file-selection --filename=$HOME/$USER --title="MANDATORY - Select a file to hash (Could be anything)")"
 
-# must set the working dir at the location of var FILE
-	export VAR1="$FILE"
-	#echo "$(dirname "${VAR1}")"
-	#echo "$(basename "${VAR1}")"
-	#echo var is a var : "$(dirname "${VAR1}")"
-	#echo For debug purpose press a key !
-	#read name
-
+	echo file = "$file"
+	export VAR2="$file"
+	echo "$(dirname "${VAR2}")"
+	echo "$(basename "${VAR2}")"
+	
 echo -----------------------------------------------------------------------------
 
-# if exist file then load
-# else "no, select a file"
-	#shafile="$FILE".sha256
-	#if [ -f "$shafile" ];
-	#then
-	#echo "shafile exists. "$(dirname "${VAR2}")" "
-	#else
-	#echo "shafile NOT exists"
-	#fi
-	#echo "$file"
-	#echo "$(dirname "${VAR1}")"
-	#echo "$(dirname "${VAR2}")"
-	#echo "$(dirname "${VAR3}")"
-	#echo "shafile = "$shafile""
-	#echo For debug purpose press a key !
-	#read name
-
-echo -----------------------------------------------------------------------------
-
-echo "OPTIONAL - Select a file with the hash inside (*.sha256)"
+exist="$file".sha256""
+	if test -f "$exist"; then
+	echo "exist"
+	else
+	echo "OPTIONAL - Select a file with the hash inside (*.sha256)"
 sha256file="$(zenity --file-selection --filename=$HOME/$USER --file-filter=*.sha256 --title="OPTIONAL - Select a file with the hash inside (*.sha256)")"
+	fi
+
+	read -r sha256file<"$file.sha256"
+	echo sha256file="$sha256file"
+	firstline="$sha256file"
 
 echo -----------------------------------------------------------------------------
 
-	export VAR2="$FILE"
-	#echo "$(dirname "${VAR2}")"
-	#echo "$(basename "${VAR2}")"
-	#echo var is a var : "$(dirname "${VAR2}")"
-	#echo sha256file="$sha256file"
-
-if [ "$sha256file" = "" ]; then
-	#echo "Only one file was provided."
-	export VAR3="$FILE"
-	echo -----------------------------------------------------------------------------
-	echo "Your file to check is :"
-	echo ------------------------
-	echo "$FILE"
-	echo "The ckeck sum calculated is :"
-	sha256sum "$FILE" | awk '{print $1}' > "${FILE}.sha256"
-	echo -----------------------------------------------------------------------------
-	read -r firstline2<"${FILE}.sha256"
-	# if the file exist don't create again
-	echo "$firstline2  $(basename "${VAR3}")" > "${FILE}.sha256"
-	echo Is writen : "$firstline2  $(basename "${VAR3}")"
-	echo -----------------------------------------------------------------------------
-	echo You have created a new file with sum, press ENTER key to exit !
-	read name
-	exit
-
-else
 	#two file have ben provided.
 	export VAR2="$file"
 	echo dirname = "$(dirname "${VAR2}")"
@@ -116,8 +77,6 @@ else
 	echo Press ENTER key to exit !
 	read name
 	exit
-
-fi
 
 echo -----------------------------------------------------------------------------
 

@@ -37,9 +37,13 @@ Things to do !
 -Check_sha256_V1.sh
 
 The main software. Will ask for 2 files, one after another, and compare the hash include in the second specified file.
+	-ask for 2 files to compare
 
 -Check_sha512_V2.sh
 The main software. Will ask for 1 files (and check if hash file exist then autoload OR ask for a second file and compare the hash include in the second specified/automatic file.
+	-ask for 1 file
+	-watch if *.sha256 exist and load
+	-if not, ask for a file
 
 -create_sha256.sh
 c-reate_sha512.sh
