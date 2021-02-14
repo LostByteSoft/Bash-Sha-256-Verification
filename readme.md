@@ -66,11 +66,13 @@ Exemple of the first line : 0ca160e99aa0e719a4926797292654f9a26bc9591beee21a8ec6
 Only the first line is revelant for now.
 
 
-create_sha256_folder.sh
+create_sha256_folder_V1.sh
 
-	Will create for a specified folder all *.sha256 file.
+	NEED to put in the folder you want create for a specified folder all *.sha256 file.
 
+create_sha256_folder_V2.sh
 
+	Create for a specified folder you selected all *.sha256 file.
 
 
 FREE Linux Bash software by LostByteSoft

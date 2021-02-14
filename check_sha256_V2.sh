@@ -8,7 +8,7 @@ echo "Version 2021-02-14"
 echo -----------------------------------------------------------------------------
 
 echo "MANDATORY - Select a file to hash (Could be anything)"
-FILE="$(zenity --file-selection --filename=$HOME/$USER --title="MANDATORY - Select a file to hash (Could be anything)")"
+file="$(zenity --file-selection --filename=$HOME/$USER --title="MANDATORY - Select a file to hash (Could be anything)")"
 
 # must set the working dir at the location of var FILE
 	export VAR1="$FILE"
@@ -70,23 +70,48 @@ if [ "$sha256file" = "" ]; then
 	exit
 
 else
-	#echo "You have provided two files."
-	cd /"$(dirname "${VAR2}")"
+	#two file have ben provided.
+	export VAR2="$file"
+	echo dirname = "$(dirname "${VAR2}")"
+	echo basename = "$(basename "${VAR2}")"
+	
 	echo -----------------------------------------------------------------------------
-	read -r firstline<"$sha256file"
-	echo ------------------------
+	sha256sum "$file" | awk '{print $1}' > "/dev/shm/"$(basename "${VAR2}")".sha256"
+	read -r calsum<"/dev/shm/"$(basename "${VAR2}")".sha256"
 	echo "The ckeck sum calculated is :"
-	sha256sum "$FILE"
+	echo calsum = "$calsum"
+	echo "$calsum $(basename "${VAR2}")" > "/dev/shm/"$(basename  "${VAR2}")".sha256"
 	echo ------------------------
-	echo "Your sha256 file is : "
+	echo "Your selected file for hash is : "
+	echo $file
+	echo ------------------------
+	read -r firstline<"$sha256file"
+	echo "Your selected sha256 file is : "
 	echo "$sha256file"
-	echo The ckeck sum in file is :
-	echo "$firstline"
-	echo ------------------------
-	echo Visually compare !
 	echo  -----------------------------------------------------------------------------
-	echo "If you have OK here it is OK !"
-	sha256sum -c "$sha256file"
+	calsum2=""$calsum"  "$(basename "${VAR2}")""
+	#echo calsum... = "$calsum"  "$(basename "${VAR2}")"
+	echo calsum2.. = "$calsum2"
+	echo firstline = "$firstline"
+	echo Visually compare !
+	echo ------------------------
+	
+	red=`tput setaf 1`
+	green=`tput setaf 2`
+	reset=`tput sgr0`
+	#echo "${red}red text ${green}green text${reset}"
+	
+	echo "And the final answer is .... :"
+	if [ "$calsum2" = "$firstline" ]; then
+
+	echo "${green}Sha256sum with compare hash is EQUAL${reset}"
+	#echo "Sha256sum with compare hash is EQUAL"
+	else
+	
+	echo "${red}Sha256sum with compare hash ARE NOT equal${reset}"
+	#echo "Sha256sum with compare hash ARE NOT equal"
+	fi
+
 	echo -----------------------------------------------------------------------------
 	echo Press ENTER key to exit !
 	read name
