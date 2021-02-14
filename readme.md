@@ -1,3 +1,5 @@
+--------------------------------------------------------------------
+
 FREE Linux Bash software by LostByteSoft
 
 No CopyRIGHT or CopyLEFT, i am juste in the CopyCENTER. That not perfect but me neither.
@@ -10,8 +12,7 @@ I'M WORKING ON A VERSION THAT TAKE THE GOOD LINE TO CHECK THE SHA FILE.
 
 ONLY ONE LINE IS SUPPORTED IN *.sha256 FILE.
 
-
-
+--------------------------------------------------------------------
 
 Things to do !
 
@@ -21,9 +22,13 @@ Things to do !
 * Other check : sha512, crc32 , ...
 * i'm sure there are more to do....
 
-
+--------------------------------------------------------------------
 
 Easy way or not in bash to verify create and hash a file in sha 256.
+
+In each file you can replace sha256sum by any check sum you want : crc32, sha-1, ... etc
+
+--------------------------------------------------------------------
 
 Version 2021-01-29
 
@@ -41,23 +46,23 @@ Version 2021-02-14
 
 * Files and use
 
-Check_sha256_V1.sh
+-Check_sha256_V1.sh
 
 The main software. Will ask for 2 files, one after another, and compare the hash include in the second specified file.
 
-Check_sha512_V2.sh
+-Check_sha512_V2.sh
 The main software. Will ask for 1 files (and check if hash file exist then autoload OR ask for a second file and compare the hash include in the second specified/automatic file.
 
-create_sha256.sh
-create_sha512.sh
+-create_sha256.sh
+c-reate_sha512.sh
 
 Ask for one file to hash and create *.sha256 or *.sha512 file. With correct name and formatting.
 
-testfile.txt
+-testfile.txt
 
 This is the test file to hash.
 
-testfile.txt.sha256
+-testfile.txt.sha256
 
 In this file there are the pre-calculated hash and the file name. You (if you create this file) must follow the corect format, or correct the file to respect the format. HOW: Is the hash code plus two (2) spaceS and the name of the file. Only the first line is revelant for now.
 
@@ -66,16 +71,18 @@ Exemple of the first line : 0ca160e99aa0e719a4926797292654f9a26bc9591beee21a8ec6
 Only the first line is revelant for now.
 
 
-create_sha256_folder_V1.sh
+-create_sha256_folder_V1.sh
 
 	NEED to put in the folder you want create for a specified folder all *.sha256 file.
 
-create_sha256_folder_V2.sh
+-create_sha256_folder_V2.sh
 
 	Create for a specified folder you selected all *.sha256 file.
 
 
 FREE Linux Bash software by LostByteSoft
+
+--------------------------------------------------------------------
 
 --- End of readme ---
 
@@ -108,3 +115,5 @@ FREE Linux Bash software by LostByteSoft
 	If you are unhappy with this software i do not care.
 	
 --- End of licence ---
+
+--------------------------------------------------------------------
