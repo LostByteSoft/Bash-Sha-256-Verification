@@ -13,7 +13,7 @@ file="$(zenity --file-selection --filename=$HOME/$USER --title="MANDATORY - Sele
 echo -----------------------------------------------------------------------------
 
 echo "MANDATORY - Select a file with the hash inside (*.sha256)"
-sha256file="$(zenity --file-selection --filename=$HOME/$USER --file-filter=*.sha256 --title="MANDATORY - Select a file with the hash inside (*.sha256)")"
+sha256file="$(zenity --file-selection --filename=$HOME/$USER --file-filter="*.sha256 *.txt" --title="MANDATORY - Select a file with the hash inside (*.sha256 *.txt)")"
 
 echo -----------------------------------------------------------------------------
 

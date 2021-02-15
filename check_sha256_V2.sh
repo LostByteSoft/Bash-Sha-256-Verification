@@ -10,6 +10,8 @@ echo ---------------------------------------------------------------------------
 echo "MANDATORY - Select a file to hash (Could be anything)"
 file="$(zenity --file-selection --filename=$HOME/$USER --title="MANDATORY - Select a file to hash (Could be anything)")"
 
+echo -----------------------------------------------------------------------------
+
 	echo file = "$file"
 	export VAR2="$file"
 	echo "$(dirname "${VAR2}")"
@@ -19,15 +21,21 @@ echo ---------------------------------------------------------------------------
 
 exist="$file".sha256""
 	if test -f "$exist"; then
-	echo "exist"
-	else
-	echo "OPTIONAL - Select a file with the hash inside (*.sha256)"
-sha256file="$(zenity --file-selection --filename=$HOME/$USER --file-filter=*.sha256 --title="OPTIONAL - Select a file with the hash inside (*.sha256)")"
-	fi
+	echo "exist, autoread"
+	read -r firstline<"$file.sha256"
+	
+else
+	echo "NOT exist, must select"
+echo "OPTIONAL - Select a file with the hash inside (*.sha256 *.txt)"
+sha256file="$(zenity --file-selection --filename=$HOME/$USER --file-filter="*.sha256 *.txt" --title="OPTIONAL - Select a file with the hash inside (*.sha256 *.txt)")"
 
-	read -r sha256file<"$file.sha256"
-	echo sha256file="$sha256file"
-	firstline="$sha256file"
+	read -r firstline<"$sha256file"
+
+fi
+	# Debug echo
+	#echo file="$file"
+	#echo firstline="$firstline"
+	#echo sha256file="$sha256file"
 
 echo -----------------------------------------------------------------------------
 
@@ -35,7 +43,6 @@ echo ---------------------------------------------------------------------------
 	export VAR2="$file"
 	echo dirname = "$(dirname "${VAR2}")"
 	echo basename = "$(basename "${VAR2}")"
-	
 	echo -----------------------------------------------------------------------------
 	sha256sum "$file" | awk '{print $1}' > "/dev/shm/"$(basename "${VAR2}")".sha256"
 	read -r calsum<"/dev/shm/"$(basename "${VAR2}")".sha256"
@@ -46,10 +53,9 @@ echo ---------------------------------------------------------------------------
 	echo "Your selected file for hash is : "
 	echo $file
 	echo ------------------------
-	read -r firstline<"$sha256file"
-	echo "Your selected sha256 file is : "
+	echo "Your selected sha256 file is : (Only if you have selected one) "
 	echo "$sha256file"
-	echo  -----------------------------------------------------------------------------
+	echo -------------------------------------------------------------
 	calsum2=""$calsum"  "$(basename "${VAR2}")""
 	#echo calsum... = "$calsum"  "$(basename "${VAR2}")"
 	echo calsum2.. = "$calsum2"
@@ -79,10 +85,6 @@ echo ---------------------------------------------------------------------------
 	exit
 
 echo -----------------------------------------------------------------------------
-
-echo Error 001 - Press ENTER key to exit !
-read name
-exit
 
 echo --- End of bash ---
 
