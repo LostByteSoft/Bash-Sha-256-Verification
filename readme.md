@@ -1,3 +1,5 @@
+
+Check/compare bash sha 256 
 --------------------------------------------------------------------
 
 FREE Linux Bash software by LostByteSoft
@@ -20,9 +22,8 @@ Version 2021-02-14
 
 ![Screenshot](Picture_7.jpg)
 
---------------------------------------------------------------------
-
 Things to do !
+--------------------------------------------------------------------
 
 * WORK (Check_sha256_V2.sh) auto load *.sha256 file if exist.
 * Other check : sha512, crc32 , ...
@@ -30,27 +31,35 @@ Things to do !
 * Offer to create sha file if not provided and not existent (Check_sha256_V3.sh)
 * i'm sure there are more to do....
 
---------------------------------------------------------------------
-
 * Files and use
+--------------------------------------------------------------------
 
 -Check_sha256_V1.sh, consider V2 as a best option.
 
 	The main software. Will ask for 2 files, one after another, and compare the hash include in the second specified file.
 	
-	-ask for 2 files to compare
+	-ask for 2 files to compare.
+	-You must fournish 2 files.
 
 -Check_sha256_V2.sh
 
 	The main software. Will ask for 1 files (and check if hash file exist then autoload OR ask for a second file and compare the hash include in the second specified/automatic file.
 	
 	-ask for 1 file
-	-watch if *.sha256 exist and load
-	-if not, ask for a file
-
+	-watch if *.sha256 exist and load (of the same name)
+	
 -Check_sha256_V3.sh, consider V2 as a best option.
 
 	The main software. Will ask for 1 files (and check if hash file exist then autoload OR ask for a second file and compare the hash include in the second specified/automatic file OR offer to create new sha256 file.
+	
+	-ask for 1 file
+	-watch if *.sha256 exist and load (of the same name)	
+	-if not exist, ask for a file.
+	-If you don't provide a file will create a new *.sha256 file.
+
+
+Specials & extras
+--------------------------------------------------------------------
 
 -create_sha256.sh
 
@@ -78,9 +87,8 @@ Things to do !
 
 FREE Linux Bash software by LostByteSoft
 
+Old versions
 --------------------------------------------------------------------
-
-	OLD VERSIONS
 
 Version 2021-01-29
 
