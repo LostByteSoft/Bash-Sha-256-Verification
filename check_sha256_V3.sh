@@ -24,28 +24,55 @@ exist="$file".sha256""
 	echo "exist, autoread"
 	read -r firstline<"$file.sha256"
 
-	echo "$firstline" | tr [:upper:] [:lower:]
-	echo "$firstline"
-	echo Press ENTER 02!
-	read name
-	
 else
-	echo "NOT exist, must select"
+	echo "Associated sha256 file NOT exist, must select OR create"
 echo "OPTIONAL - Select a file with the hash inside (*.sha256 *.txt)"
 sha256file="$(zenity --file-selection --filename=$HOME/$USER --file-filter="*.sha256 *.txt" --title="OPTIONAL - Select a file with the hash inside (*.sha256 *.txt)")"
 
+
+echo -----------------------------------------------------------------------------
+
+{
+if test -z "$sha256file"
+	then
+		echo "You don't have selected a file. You will create a new *.sha256file"
+		echo Press ENTER to continue the creation.
+		read name
+			cd /"$(dirname "${VAR1}")"
+			echo -----------------------------------------------------------------------------
+			echo "Your file to check is :"
+			echo "$FILE"
+			echo ------------------------
+			echo The ckeck sum calculated is :
+			sha256sum "$file" | awk '{print $1}' > "${file}.sha256"
+			echo -----------------------------------------------------------------------------
+			read -r firstline2<"${file}.sha256"
+			export VAR3="$file"
+			#echo "$(dirname "${VAR3}")"
+			#echo "$(basename "${VAR3}")"
+			#echo var is a var : "$(dirname "${VAR3}")"
+			echo "$firstline2  $(basename "${VAR3}")" > "${file}.sha256"
+			echo Is writen : "$firstline2  $(basename "${VAR3}")"
+			echo -----------------------------------------------------------------------------
+			echo You have created a new file with sum, press ENTER key to exit !
+			read name
+			exit
+	else
+	echo "File selected"
+fi
+}
+
+echo -----------------------------------------------------------------------------
+
 	read -r firstline<"$sha256file"
-	
-	echo "$firstline"
-	echo "$firstline^l"
-	echo Press ENTER 02!
-	read name
 
 fi
 	# Debug echo
 	#echo file="$file"
 	#echo firstline="$firstline"
 	#echo sha256file="$sha256file"
+	#echo Press ENTER !
+	#read name
 
 echo -----------------------------------------------------------------------------
 
