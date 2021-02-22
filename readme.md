@@ -27,34 +27,38 @@ Things to do !
 
 * WORK (Check_sha256_V2.sh) auto load *.sha256 file if exist.
 * Other check : sha512, crc32 , ...
-* select the good hash in file if many is present.
-* Offer to create sha file if not provided and not existent (Check_sha256_V3.sh)
+* select the good hash (good line) in file if many is present.
+* WORK Offer to create sha file if not provided and not existent (Check_sha256_V3.sh)
 * i'm sure there are more to do....
 
-* Files and use
+Files and use
 --------------------------------------------------------------------
 
--Check_sha256_V1.sh, consider V2 as a best option.
+-Check_sha256_V1.sh, consider V3 as a best option.
 
-	The main software. Will ask for 2 files, one after another, and compare the hash include in the second specified file.
+	The main software. Will ask for 2 files, one after another, and compare the hash
+	 include in the second specified file.
 	
 	-ask for 2 files to compare.
 	-You must fournish 2 files.
 
--Check_sha256_V2.sh
+-Check_sha256_V2.sh, consider V3 as a best option.
 
-	The main software. Will ask for 1 files (and check if hash file exist then autoload OR ask for a second file and compare the hash include in the second specified/automatic file.
+	The main software. Will ask for 1 files (and check if hash file exist then
+	 autoload OR ask for a second file and compare the hash include in the second specified/automatic file.
 	
 	-ask for 1 file
 	-watch if *.sha256 exist and load (of the same name)
 	
--Check_sha256_V3.sh, consider V2 as a best option.
+-Check_sha256_V3.sh, yes it is the best version.
 
-	The main software. Will ask for 1 files (and check if hash file exist then autoload OR ask for a second file and compare the hash include in the second specified/automatic file OR offer to create new sha256 file.
+	The main software. Will ask for 1 files (and check if hash file exist then autoload
+	 OR ask for a second file and compare the hash include in the second specified/automatic
+	 file OR (if you click cancel) offer to create new sha256 file.
 	
 	-ask for 1 file
 	-watch if *.sha256 exist and load (of the same name)	
-	-if not exist, ask for a file.
+	-if not exist, ask for a hash file (*.sha256 *.txt).
 	-If you don't provide a file will create a new *.sha256 file.
 
 
