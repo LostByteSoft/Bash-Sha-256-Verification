@@ -73,11 +73,10 @@ Files and use
 	-if not exist, ask for a hash file (*.sha256 *.txt).
 	-If you don't provide a file will create a new *.sha256 file.
 	-If you provide a hash file with multiple hash inside it will take the good line.
-	
-	Screenshot of the version 4.
-	
-	![Screenshot](Picture_8.jpg)
 
+
+Screenshot of the version 4.
+![Screenshot](Picture_8.jpg)
 
 Specials & extras
 --------------------------------------------------------------------
