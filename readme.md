@@ -34,32 +34,49 @@ Things to do !
 Files and use
 --------------------------------------------------------------------
 
--Check_sha256_V1.sh, consider V3 as a best option.
+-Check_sha256_V1.sh, consider V4 as a best option.
 
 	The main software. Will ask for 2 files, one after another, and compare the hash
-	 include in the second specified file.
+	include in the second specified file.
 	
-	-ask for 2 files to compare.
-	-You must fournish 2 files.
+	-ask for 2 file (You must fournish 2 files)
 
--Check_sha256_V2.sh, consider V3 as a best option.
+-Check_sha256_V2.sh, consider V4 as a best option.
 
 	The main software. Will ask for 1 files (and check if hash file exist then
-	 autoload OR ask for a second file and compare the hash include in the second specified/automatic file.
+	autoload OR ask for a second file and compare the hash include in the second specified/automatic
+	file.
 	
 	-ask for 1 file
-	-watch if *.sha256 exist and load (of the same name)
+	-watch if *.sha256 exist and load (of the same name *.sha256)
+	-if not exist, ask for a hash file (*.sha256 *.txt).
 	
--Check_sha256_V3.sh, yes it is the best version.
+-Check_sha256_V3.sh, consider V4 as a best option.
 
 	The main software. Will ask for 1 files (and check if hash file exist then autoload
-	 OR ask for a second file and compare the hash include in the second specified/automatic
-	 file OR (if you click cancel) offer to create new sha256 file.
+	OR ask for a second file and compare the hash include in the second specified/automatic
+	file OR (if you click cancel) offer to create new sha256 file.
 	
 	-ask for 1 file
-	-watch if *.sha256 exist and load (of the same name)	
+	-watch if *.sha256 exist and load (of the same name *.sha256)	
 	-if not exist, ask for a hash file (*.sha256 *.txt).
 	-If you don't provide a file will create a new *.sha256 file.
+	
+-Check_sha256_V4.sh, yes it is the best version.
+
+	The main software. Will ask for 1 files (and check if hash file exist then autoload
+	OR ask for a second file WITH MULTIPLE HASH INSIDE and compare the hash include in the second specified/automatic
+	file OR (if you click cancel) offer to create new sha256 file.
+	
+	-ask for 1 file
+	-watch if *.sha256 exist and load (of the same name *.sha256)	
+	-if not exist, ask for a hash file (*.sha256 *.txt).
+	-If you don't provide a file will create a new *.sha256 file.
+	-If you provide a hash file with multiple hash inside it will take the good line.
+	
+	Screenshot of the version 4.
+	
+	![Screenshot](Picture_8.jpg)
 
 
 Specials & extras
@@ -77,7 +94,12 @@ Specials & extras
 
 -testfile.txt.sha256
 
-	In this file there are the pre-calculated hash and the file name. You (if you create this file) must follow the corect format, or correct the file to respect the format. HOW: Is the hash code plus two (2) spaceS and the name of the file. Only the first line is revelant for now. Exemple of the first line : 0ca160e99aa0e719a4926797292654f9a26bc9591beee21a8ec6f2808616acee  testfile.txt Only the first line is revelant for now.
+	In this file there are the pre-calculated hash and the file name. You (if you create
+	 this file) must follow the corect format, or correct the file to respect the format. 
+	 HOW: Is the hash code plus two (2) spaceS and the name of the file. Only the first 
+	 line is revelant for now. Exemple of the first line : 
+	 0ca160e99aa0e719a4926797292654f9a26bc9591beee21a8ec6f2808616acee  testfile.txt 
+	 Only the first line is revelant for now.
 
 
 -create_sha256_folder_V1.sh

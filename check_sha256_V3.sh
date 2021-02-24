@@ -2,9 +2,10 @@ echo --- Start of file ---
 #!/bin/bash
 printf '\033[8;43;132t'		# will resize the window to 132 x 43 characters.
 echo -----------------------------------------------------------------------------
-echo "Version 2 - sha-256-sum verification, you will select 1 or 2 files"
+echo "Sha-256-sum verification, you will select 1 or 2 files"
+echo "Version 3"
 echo "By LostByteSoft"
-echo "Version 2021-02-14"
+echo "Version 2021-02-23"
 echo -----------------------------------------------------------------------------
 
 echo "MANDATORY - Select a file to hash (Could be anything)"
@@ -35,13 +36,13 @@ echo ---------------------------------------------------------------------------
 {
 if test -z "$sha256file"
 	then
-		echo "You don't have selected a file. You will create a new *.sha256file"
-		echo Press ENTER to continue the creation.
+		echo "You don't have selected a file. You will create a new *.sha256 file"
+		echo Press ENTER to continue the creation of a .sha256 file.
 		read name
 			cd /"$(dirname "${VAR1}")"
 			echo -----------------------------------------------------------------------------
 			echo "Your file to check is :"
-			echo "$FILE"
+			echo "$file"
 			echo ------------------------
 			echo The ckeck sum calculated is :
 			sha256sum "$file" | awk '{print $1}' > "${file}.sha256"
@@ -54,11 +55,11 @@ if test -z "$sha256file"
 			echo "$firstline2  $(basename "${VAR3}")" > "${file}.sha256"
 			echo Is writen : "$firstline2  $(basename "${VAR3}")"
 			echo -----------------------------------------------------------------------------
-			echo You have created a new file with sum, press ENTER key to exit !
+			echo You have created a new file with sum, press ENTER key to continue and compare !
 			read name
-			exit
+			sha256file="${file}.sha256"
 	else
-	echo "File selected"
+	echo "File selected, "${file}.sha256""
 fi
 }
 

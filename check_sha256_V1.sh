@@ -2,7 +2,8 @@ echo --- Start of file ---
 #!/bin/bash
 printf '\033[8;43;132t'		# will resize the window to 132 x 43 characters.
 echo -----------------------------------------------------------------------------
-echo "Version 1 - sha-256-sum verification, you will select 2 files"
+echo "Sha-256-sum verification, you will select 2 files"
+echo "Version 1"
 echo "By LostByteSoft"
 echo "Version 2021-02-14"
 echo -----------------------------------------------------------------------------
