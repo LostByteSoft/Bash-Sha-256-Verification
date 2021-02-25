@@ -2,12 +2,20 @@ echo --- Start of file ---
 #!/bin/bash
 printf '\033[8;20;80t'		# will resize the window to 132 x 43 characters.
 echo -----------------------------------------------------------------------------
-echo "create_sha256_folder_V1 - Create hash sha-256 file for all files in folder"
+echo "create_sha256_folder_V1"
+echo "Create hash sha-256 file for all files in folder, multiple hash fileS"
 echo "By LostByteSoft"
-echo "Version 2021-02-14"
+echo "Version 2021-02-24"
 echo -----------------------------------------------------------------------------
 
-echo I must be placed in the folder you want to make sha file, press ENTER !
+	red=`tput setaf 1`
+	green=`tput setaf 2`
+	reset=`tput sgr0`
+
+echo ${green}Must be placed in the folder you want to make sha fileS.${reset}
+echo ${red}!!! Carefull will be created a new sha file for EACH fileS !!!${reset}
+echo press ENTER to continue!
+
 echo -----------------------------------------------------------------------------
 read name
 

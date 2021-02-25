@@ -78,6 +78,7 @@ Files and use
 Screenshot of the version 4.
 ![Screenshot](Picture_8.jpg)
 
+
 Specials & extras
 --------------------------------------------------------------------
 
@@ -85,7 +86,8 @@ Specials & extras
 
 -create_sha512.sh
 
-	Ask for one file to hash and create *.sha256 or *.sha512 file. With correct name and formatting.
+	Ask for one file to hash and create *.sha256 or *.sha512 file. With correct name 
+	and formatting. Only for one file
 
 -testfile.txt
 
@@ -104,10 +106,17 @@ Specials & extras
 -create_sha256_folder_V1.sh
 
 	NEED to put in the folder you want create for a specified folder all *.sha256 file.
+	Will create a new file for EACH file to hash.
 
 -create_sha256_folder_V2.sh
 
-	Create for a specified folder you selected all *.sha256 file.
+	Create for a specified folder you selected all *.sha256 file. Will create a new file 
+	for EACH file to hash.
+	
+-create_sha256_folder_V3.sh
+
+	Create for a specified folder you selected all *.sha256 file. Will create ONLY ONE file 
+	for EACH file to hash.
 
 
 FREE Linux Bash software by LostByteSoft
