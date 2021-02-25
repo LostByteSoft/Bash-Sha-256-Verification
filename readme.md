@@ -8,27 +8,18 @@ No CopyRIGHT or CopyLEFT, i am juste in the CopyCENTER. That not perfect but me 
 
 Bash sha 256 verification help tool.
 
-BETA VESION !!! If you want to help you're welcome !!
-
-I'M WORKING ON A VERSION THAT TAKE THE GOOD LINE TO CHECK THE SHA FILE.
-
-ONLY ONE LINE IS SUPPORTED IN *.sha256 FILE.
-
 Easy way or not in bash to verify create and hash a file in sha 256.
 
 In each file you can replace sha256sum by any check sum you want : crc32, sha-1, ... etc
 
-Version 2021-02-14
-
-![Screenshot](Picture_7.jpg)
 
 Things to do !
 --------------------------------------------------------------------
 
 * WORK (Check_sha256_V2.sh) auto load *.sha256 file if exist.
+* WORK select the good hash (good line) in file if many is present.
+* WORK Offer to create sha file if not provided and not existent (Check_sha256_V4.sh)
 * Other check : sha512, crc32 , ...
-* select the good hash (good line) in file if many is present.
-* WORK Offer to create sha file if not provided and not existent (Check_sha256_V3.sh)
 * i'm sure there are more to do....
 
 Files and use
@@ -131,6 +122,10 @@ Version 2021-01-29
 Version 2021-02-10
 
 ![Screenshot](Picture_6.jpg)
+
+Version 2021-02-14
+
+![Screenshot](Picture_7.jpg)
 
 --------------------------------------------------------------------
 
