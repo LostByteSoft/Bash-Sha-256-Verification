@@ -28,7 +28,7 @@ Things to do !
 Files and use
 --------------------------------------------------------------------
 
--Check_sha256_V1.sh, base version
+-Check_sha256_V1.sh, consider V5 as a best option.
 
 	The main software. Will ask for 2 files, one after another, and compare the hash
 	include in the second specified file.
@@ -42,7 +42,7 @@ Files and use
 	file.
 	
 	-ask for 1 file
-	-watch if *.sha256 exist and load (of the same name *.*)
+	-watch if *.sha256 exist and load (of the same name *.sha256)
 	-if not exist, ask for a hash file (*.sha256 *.txt).
 	
 -Check_sha256_V3.sh
@@ -52,33 +52,34 @@ Files and use
 	file OR (if you click cancel) offer to create new sha256 file.
 	
 	-ask for 1 file
-	-watch if *.sha256 exist and load (of the same name *.*)	
+	-watch if *.sha256 exist and load (of the same name *.sha256)	
 	-if not exist, ask for a hash file (*.sha256 *.txt).
 	-If you don't provide a file will create a new *.sha256 file.
 	
--Check_sha256_V4.sh, BEST version to use.
+-Check_sha256_V4.sh
 
 	The main software. Will ask for 1 files (and check if hash file exist then autoload
 	OR ask for a second file WITH MULTIPLE HASH INSIDE and compare the hash include in the second specified/automatic
 	file OR (if you click cancel) offer to create new sha256 file.
 	
 	-ask for 1 file
-	-watch if *.sha256 exist and load (of the same name *.*)	
+	-watch if *.sha256 exist and load (of the same name *.sha256)	
 	-if not exist, ask for a hash file (*.sha256 *.txt).
 	-If you don't provide a file will create a new *.sha256 file.
 	-If you provide a hash file with multiple hash inside it will take the good line.
 	
--Check_sha256_V5.sh, in beta developpement (NOT included).
+	-Check_sha256_V5.sh, yes it is the best version.
 
 	The main software. Will ask for 1 files (and check if hash file exist then autoload
 	OR ask for a second file WITH MULTIPLE HASH INSIDE and compare the hash include in the second specified/automatic
 	file OR (if you click cancel) offer to create new sha256 file.
 	
-	-ask for 1 FOLDER
-	-watch if sha256sums.sha256 exist and load	
+	-ask for 1 file
+	-watch if *.sha256 exist and load (of the same name *.sha256)	
 	-if not exist, ask for a hash file (*.sha256 *.txt).
-	-If you don't provide a file will create a new *.sha256 file for entire FOLDER.
-	-Compare all files in folder, sha256 lines in file.
+	-If you don't provide a file will create a new *.sha256 file.
+	-If you provide a hash file with multiple hash inside it will take the good line.
+	-If sha256sums.sha256 file exist will vefiry all files/lines
 
 
 Screenshot of the version 4.
@@ -172,7 +173,11 @@ Version 2021-02-14
 
               LostByteSoft no copyright or copyleft.
 
-	If you are unhappy with this software i do not care.
+	If you are unhappy with this software send request to:
+	
+	Santa Claus
+	North pole, Canada
+	H0H 0H0
 	
 --- End of licence ---
 
