@@ -28,7 +28,7 @@ Things to do !
 Files and use
 --------------------------------------------------------------------
 
--Check_sha256_V1.sh, consider V5 as a best option.
+-Check_sha256_V1.sh, consider V4 as a best option.
 
 	The main software. Will ask for 2 files, one after another, and compare the hash
 	include in the second specified file.
@@ -68,7 +68,7 @@ Files and use
 	-If you don't provide a file will create a new *.sha256 file.
 	-If you provide a hash file with multiple hash inside it will take the good line.
 	
-	-Check_sha256_V5.sh, yes it is the best version.
+-Check_sha256_V5.sh, yes it is the best version. BUT IT DOESN'T WORK NOT PROVIDED.
 
 	The main software. Will ask for 1 files (and check if hash file exist then autoload
 	OR ask for a second file WITH MULTIPLE HASH INSIDE and compare the hash include in the second specified/automatic
@@ -81,6 +81,9 @@ Files and use
 	-If you provide a hash file with multiple hash inside it will take the good line.
 	-If sha256sums.sha256 file exist will vefiry all files/lines
 
+-Check_sha256_V4.sh
+
+	Same as Check_sha256_V4.sh except for sha512.
 
 Screenshot of the version 4.
 ![Screenshot](Picture_8.jpg)
@@ -146,39 +149,5 @@ Version 2021-02-14
 --------------------------------------------------------------------
 
 --- End of readme ---
-
-            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-   Version 3.14159265358979323846264338327950288419716939937510582
-                          March 2017
-
- Everyone is permitted to copy and distribute verbatim or modified
- copies of this license document, and changing it is allowed as long
- as the name is changed.
-
-            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-
-              You just DO WHAT THE FUCK YOU WANT TO.
-
-		     NO FUCKING WARRANTY AT ALL
-
-	As is customary and in compliance with current global and
-	interplanetary regulations, the author of these pages disclaims
-	all liability for the consequences of the advice given here,
-	in particular in the event of partial or total destruction of
-	the material, Loss of rights to the manufacturer's warranty,
-	electrocution, drowning, divorce, civil war, the effects of
-	radiation due to atomic fission, unexpected tax recalls or
-	    encounters with extraterrestrial beings 'elsewhere.
-
-              LostByteSoft no copyright or copyleft.
-
-	If you are unhappy with this software send request to:
-	
-	Santa Claus
-	North pole, Canada
-	H0H 0H0
-	
---- End of licence ---
 
 --------------------------------------------------------------------

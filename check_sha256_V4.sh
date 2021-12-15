@@ -5,7 +5,10 @@ echo ---------------------------------------------------------------------------
 echo "Sha-256-sum verification, you will select 1 or 2 files"
 echo "Version 4"
 echo "By LostByteSoft"
-echo "Version 2021-02-25"
+echo "This software is CASE sensitive."
+echo "Must by have 2 space between name and sha in *.sha256 file"
+echo "Version 2021-02-25 Original release"
+echo "Version 2021-11-17 small update"
 echo -----------------------------------------------------------------------------
 
 echo "MANDATORY - Select a file to hash (Could be anything)"

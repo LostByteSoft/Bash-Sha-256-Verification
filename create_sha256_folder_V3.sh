@@ -2,10 +2,10 @@ echo --- Start of file ---
 #!/bin/bash
 printf '\033[8;43;132t'		# will resize the window to 132 x 43 characters.
 echo -----------------------------------------------------------------------------
-echo "create_sha256_folder_V3"
+echo "create_sha256_folder_V3.1"
 echo "Create hash sha-256 file for all files in folder specified, only one hash file"
 echo "By LostByteSoft"
-echo "Version 2021-02-24"
+echo "Version 2021-11-30"
 echo -----------------------------------------------------------------------------
 
 	red=`tput setaf 1`
@@ -13,7 +13,8 @@ echo ---------------------------------------------------------------------------
 	reset=`tput sgr0`
 
 echo ${green}Must select the folder you want to make sha file.${reset}
-echo ${red}!!! Carefull ALL fileS will be hashed !!! Could be very long.${reset}
+echo Will create an " sha256sums.sha256 " in the folder you specify.
+echo ${red}!!! Carefull ALL fileS in the folder you specify will be hashed !!! Could be very long.${reset}
 echo press ENTER to continue!
 
 echo -----------------------------------------------------------------------------
@@ -26,6 +27,8 @@ way="$(zenity --file-selection --title="Choose a directory to hash all file" --f
 	echo basename = "$(basename "${VAR1}")"
 	touch ""$(dirname "${VAR1}")"/"$(basename "${VAR1}")"/sha256sums.sha256"
 	echo way = "$way"
+
+echo "Wait until it finishes..."
 
 echo -----------------------------------------------------------------------------
 
