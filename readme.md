@@ -28,7 +28,9 @@ Things to do !
 Files and use
 --------------------------------------------------------------------
 
--Check_sha256_V1.sh, consider V4 as a best option.
+Consider V5 as best option. But all version is working fine.
+
+-Check_sha256_V1.sh
 
 	The main software. Will ask for 2 files, one after another, and compare the hash
 	include in the second specified file.
@@ -68,20 +70,11 @@ Files and use
 	-If you don't provide a file will create a new *.sha256 file.
 	-If you provide a hash file with multiple hash inside it will take the good line.
 	
--Check_sha256_V5.sh, yes it is the best version. BUT IT DOESN'T WORK NOT PROVIDED.
+-check_sha256_V5.sh
 
-	The main software. Will ask for 1 files (and check if hash file exist then autoload
-	OR ask for a second file WITH MULTIPLE HASH INSIDE and compare the hash include in the second specified/automatic
-	file OR (if you click cancel) offer to create new sha256 file.
-	
-	-ask for 1 file
-	-watch if *.sha256 exist and load (of the same name *.sha256)	
-	-if not exist, ask for a hash file (*.sha256 *.txt).
-	-If you don't provide a file will create a new *.sha256 file.
-	-If you provide a hash file with multiple hash inside it will take the good line.
-	-If sha256sums.sha256 file exist will vefiry all files/lines
+	-Same as V4 but updated gui
 
--Check_sha256_V4.sh
+-Check_sha512_V4.sh
 
 	Same as Check_sha256_V4.sh except for sha512.
 
@@ -148,6 +141,24 @@ Version 2021-02-14
 
 --------------------------------------------------------------------
 
---- End of readme ---
+	JUST DO WHAT YOU WANT WITH THE PUBLIC LICENSE
+
+	Version 3.1415926532 (January 2022)
+
+	TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+   
+	Everyone is permitted to copy and distribute verbatim or modified copies of
+	this license document.
+
+	As is customary and in compliance with current global and interplanetary
+	regulations, the author of these pages disclaims all liability for the
+	consequences of the advice given here, in particular in the event of partial
+	or total destruction of the material, Loss of rights to the manufacturer
+	warranty, electrocution, drowning, divorce, civil war, the effects of radiation
+	due to atomic fission, unexpected tax recalls or encounters with
+	extraterrestrial beings elsewhere.
+
+	LostByteSoft no copyright or copyleft we are in the center.
 
 --------------------------------------------------------------------
+# --- End of file ---
