@@ -1,15 +1,18 @@
 #!/bin/bash
 #!/usr/bin/ffmpeg
 ## -----===== Start of bash =====-----
-
 	printf '\033[8;30;80t'		# will resize the window, if needed.
+	#printf '\033[8;40;75t'		# will resize the window, if needed.
+	#printf '\033[8;40;125t'		# will resize the window, if needed.
 	#printf '\033[8;50;200t'	# will resize the window, if needed.
-
-	## Software lead in
+echo -------------------------========================-------------------------
+echo "Software lead-in"
 	start=$SECONDS
 	now=$(date +"%Y-%m-%d_%A_%I:%M:%S")
 	echo "Current time : $now"
-
+	echo
+	echo Version compiled on : Also serves as a version
+	echo 2022-02-02_Wednesday_08:15:14
 echo -----------------------------------------------------------------------------
 echo "create_sha256_folder_V2"
 echo "Create hash sha-256 file for all files in folder specified, multiple hash fileS"
@@ -21,8 +24,9 @@ echo ---------------------------------------------------------------------------
 	green=`tput setaf 2`
 	reset=`tput sgr0`
 
-echo ${green}Must select the folder you want to make sha fileS.${reset}
-echo ${red}!!! Carefull will be created a new sha file for EACH fileS !!!${reset}
+echo ${green}Must select the folder you want to make sha file.${reset}
+echo Will create an " sha256sums.sha256 " in the folder you specify.
+echo ${red}!!! Carefull ALL fileS in the folder you specify will be hashed !!! Could be very long.${reset}
 echo press ENTER to continue!
 
 echo -----------------------------------------------------------------------------

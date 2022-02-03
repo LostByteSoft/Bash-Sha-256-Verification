@@ -16,26 +16,24 @@ echo -------------------------========================-------------------------
 	echo "Current time : $now"
 	echo
 	echo Version compiled on : Also serves as a version
-	echo 2022-02-03_Thursday_06:28:15
+	echo 2022-02-03_Thursday_05:19:29
 echo -------------------------========================-------------------------
-echo "create_sha256_folder_V3.2"
-echo "Create hash sha-256 file for all files in folder specified, only one hash file"
-echo "By LostByteSoft"
-echo "Version 2021-11-30"
-echo -------------------------========================-------------------------
-echo
-echo ${green}Must select the folder you want to make sha-256 file.${reset}
-echo Will create an " sha256sums.sha256 " in the folder you specify.
-echo This file could be selected with check_sha256_V5.sh
-echo ${red}!!! Carefull ALL fileS in the folder you specify will be hashed !!! Could be very long.${reset}
-echo
-echo Press ${yellow}ENTER${reset} to continue!
-echo
-echo -------------------------========================-------------------------
-read name
-echo "Select directory using dialog !"
+## Software name, what is this, version, informations.
+	echo "Software name: check sha256 Manual Input"
+	echo "File name : check_sha256_Manual.sh"
+	echo
+	echo "What it does ? Compare the calculated sha-256 of a file with an sha-256 you specified."
+	echo
+	echo "Informations : (EULA at the end of file, open in text.)"
+	echo "By LostByteSoft, no copyright or copyleft."
+	echo "https://github.com/LostByteSoft"
+	echo
+	echo "Don't hack paid software, free software exists and does the job better."
 
-	file=$(zenity  --file-selection --filename=$HOME/$USER --title="Choose a directory to convert all file" --directory)
+echo -------------------------========================-------------------------
+echo "Select filename using dialog !"
+
+	file="$(zenity --file-selection --filename=$HOME/$USER --title="Select a file, all format supported")"
 
 if test -z "$file"
 	then
@@ -47,40 +45,62 @@ if test -z "$file"
 		echo "You have selected :"
 		echo "$file"
 fi
-echo -------------------------========================-------------------------
-echo "Wait until it finishes..."
-
-	export VAR1="$file"
-	echo dirname = "$(dirname "${VAR1}")"
-	echo basename = "$(basename "${VAR1}")"
-	touch ""$(dirname "${VAR1}")"/"$(basename "${VAR1}")"/sha256sums.sha256"
-	echo way = "$file"
 
 echo -------------------------========================-------------------------
-## Variables, for program."
-	part=0
 
+	entry=$(zenity --entry --title "Check sha-256" --text "Copy paste sha-256 here, NOT case sensitive.)")
+
+if test -z "$entry"
+	then
+		echo "You don't have entered an sha-256, now exit in 3 seconds."
+		echo -------------------------========================-------------------------
+		sleep 3
+		exit
+	else
+		echo "You have entered :"
+		echo "$entry"
+fi
+
+echo -------------------------========================-------------------------
+echo "Input name, directory and output name : (Debug helper)"
+## Set working path.
+	dir=$(pwd)
+	echo Input file : "$file"
+	echo Input sha : "$entry"
+	echo "Working dir : "$dir""
+	export VAR="$file"
+	echo Base directory : "$(dirname "${VAR}")"
+	echo Base name: "$(basename "${VAR}")"
+
+echo -------------------------========================-------------------------
 ## The code program.
-for i in "$file"/*.*;
-	do name=`echo "$i" `
-	part=$((part+1))
-	echo "-------------------------===== Section $part =====-------------------------"
-	echo name="$name"
-	export VAR="$i"
-	sha256sum "$name" | awk '{print $1}' > "/dev/shm/sha256sums.sha256"
-	read -r firstline<"/dev/shm/sha256sums.sha256"
-	echo "$firstline  $(basename "${VAR}")" >> ""$file"/sha256sums.sha256"
-	echo Is writen : ""$firstline"  "$(basename "${VAR}")""
-	done
 
-## Error detector.
-if [ "$?" -ge 1 ]; then
+	entry="$(echo $entry | tr '[A-Z]' '[a-z]')"
+	echo "sha256sum "$file" | awk '{print $1}'"
+	sha256sum "$file" | awk '{print $1}' > "/dev/shm/"$(basename "${VAR}")".sha256"
+	read -r calsum<"/dev/shm/"$(basename "${VAR}")".sha256"
+	echo "Your selected file for hash is : "
+	echo $file
+	echo "The ckeck sum calculated is :"
+	echo calsum = "$calsum"
 	echo
-	echo "!!! ERROR was detected !!! Press ENTER key to terminate !!!"
-	echo
-	echo "${red}ERROR ███████████████████████████ ERROR █████████████████████████████ ERROR ${reset}"
-	read name
-	exit
+	echo Visually compare these two lines !
+	echo calsum = "$calsum"
+	echo entry. = "$entry"
+
+## Verify if 2 variable is equal	
+	echo "And the final answer is .... :"
+	
+if [ "$calsum" = "$entry" ]; then
+	echo "${green}████████████████████████████████████████${reset}"
+	echo "${green}██Sha256sum with compare hash is EQUAL██${reset}"
+	echo "${green}████████████████████████████████████████${reset}"
+	#echo "Sha256sum with compare hash is EQUAL"
+else
+	echo "${red}█████████████████████████████████████████████${reset}"	
+	echo "${red}██Sha256sum with compare hash ARE NOT equal██${reset}"
+	echo "${red}█████████████████████████████████████████████${reset}"
+	#echo "Sha256sum with compare hash ARE NOT equal"
 fi
 	
 echo -------------------------========================-------------------------

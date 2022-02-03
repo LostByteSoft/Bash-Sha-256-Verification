@@ -1,20 +1,29 @@
 #!/bin/bash
 #!/usr/bin/ffmpeg
 ## -----===== Start of bash =====-----
-	#printf '\033[8;50;75t'		# will resize the window, if needed.
-	printf '\033[8;40;140t'	# will resize the window, if needed.
+	#printf '\033[8;30;80t'		# will resize the window, if needed.
+	printf '\033[8;40;80t'		# will resize the window, if needed.
+	#printf '\033[8;40;125t'	# will resize the window, if needed.
+	#printf '\033[8;50;200t'	# will resize the window, if needed.
 echo -------------------------========================-------------------------
-## Software lead in
+## Software lead-in
+	red=`tput setaf 1`
+	green=`tput setaf 2`
+	yellow=`tput setaf 3`
+	reset=`tput sgr0`
 	start=$SECONDS
 	now=$(date +"%Y-%m-%d_%A_%I:%M:%S")
 	echo "Current time : $now"
+	echo
+	echo Version compiled on : Also serves as a version
+	echo 2022-02-03_Thursday_05:09:37
 echo -------------------------========================-------------------------
 ## Software name, what is this, version, informations.
 	echo "check_sha256_V5"
-echo -------------------------========================-------------------------
+echo
 	echo What it does ?
 	echo "Sha-256-sum verification, you will select 1 or 2 files"
-echo -------------------------========================-------------------------
+echo
 	echo Informations :
 	echo "By LostByteSoft, no copyright or copyleft"
 	echo "https://github.com/LostByteSoft"
@@ -25,42 +34,43 @@ echo -------------------------========================-------------------------
 	echo "Version 2021-02-25 Original release"
 	echo "Version 2021-11-17 small update"
 	echo "Version 2022-01-23 - version 5"
-echo -------------------------========================-------------------------
-	echo Version compiled on : Also serves as a version
-	echo 2022-01-24_Monday_06:11:34
+echo
 echo -------------------------========================-------------------------
 echo "Select filename using dialog !"
 
 	file="$(zenity --file-selection --filename=$HOME/$USER --title="Select a file, all format supported")"
+	#file=$(zenity  --file-selection --filename=$HOME/$USER --title="Choose a directory to convert all file" --directory)
+	## --file-filter="*.jpg *.gif"
 
 if test -z "$file"
 	then
-		echo "You don't have selected a file, now exit."
-		echo Press ENTER to exit !
+		echo "You don't have selected a file, now exit in 3 seconds."
 		echo -------------------------========================-------------------------
-		read name
+		sleep 3
 		exit
 	else
 		echo "You have selected :"
 		echo "$file"
 fi
 echo -------------------------========================-------------------------
-echo "Input name, directory and output name :"
-
-	## Set working path.
+echo "Input name, directory and output name : (Debug helper)"
+## Set working path.
 	dir=$(pwd)
-	
 	echo Input file : "$file"
-	
 	echo "Working dir : "$dir""
-	export VAR2="$file"
-	echo Base directory : "$(dirname "${VAR2}")"
-	echo Base name: "$(basename "${VAR2}")"
-	
-	## Output file name
+	export VAR="$file"
+	echo Base directory : "$(dirname "${VAR}")"
+	echo Base name: "$(basename "${VAR}")"
+## Output file name
 	name=`echo "$file" | rev | cut -f 2- -d '.' | rev` ## remove extension
 	echo "Output file : "$name""
 echo -------------------------========================-------------------------
+## Variables, for program."
+	part=0
+
+## The code program.
+	part=$((part+1))
+	echo "-------------------------===== Section $part =====-------------------------"
 ## Check if an .sha256 file exist and autoload	
 
 exist="$file".sha256""
@@ -75,7 +85,8 @@ else
 
 	echo sha256file = "$sha256file"
 
-	echo -------------------------========================-------------------------
+		part=$((part+1))
+	echo "-------------------------===== Section $part =====-------------------------"
 	## If you press cancel on load you will create a new sha256 file
 
 	{
@@ -108,7 +119,8 @@ fi
 
 echo sha256file = $sha256file
 
-echo -------------------------========================-------------------------
+	part=$((part+1))
+	echo "-------------------------===== Section $part =====-------------------------"
 # read all lines
 	echo "All the lines in the file you provide."
 	input="$sha256file"
@@ -117,37 +129,23 @@ echo -------------------------========================-------------------------
 	echo "$line"
 	done < "$input"
 
-echo -------------------------========================-------------------------
+	part=$((part+1))
+	echo "-------------------------===== Section $part =====-------------------------"
 #put the good line in the variable firstline
-
-
-	
-		echo Input file : "$file"
-	
+	echo Input file : "$file"
 	echo "Working dir : "$dir""
 	export VAR2="$file"
 	echo Base directory : "$(dirname "${VAR2}")"
 	echo Base name: "$(basename "${VAR2}")"
-	
 	## firstline=`grep "$(basename "${VAR2}")" "$sha256file"`
-	
 	##fgrep -F "$(basename "${VAR2}")" "$sha256file" >> firstline
-	
 	## grep string filename
 	## grep example document.txt
-	
 	firstline=$(grep "$(basename "${VAR2}")" $sha256file)
-	
-	
-
-
 	echo Debug echo, you need 3 variable here.
 	echo Var 1 file = "$file"
 	echo Var 2 sha256file = "$sha256file"
 	echo Var 3 firstline = "$firstline"
-	
-	echo Press ENTER to continue!
-	read name
 	
 #watch if sha is include in file you specified
 	{
@@ -162,7 +160,8 @@ echo -------------------------========================-------------------------
 			fi
 	}
 
-echo -------------------------========================-------------------------
+	part=$((part+1))
+	echo "-------------------------===== Section $part =====-------------------------"
 #two file have ben provided.
 
 	## DEBUG echo
@@ -186,28 +185,28 @@ echo -------------------------========================-------------------------
 	echo calsum2.. = "$calsum2"
 	echo firstline = "$firstline"
 
-echo -------------------------========================-------------------------
+	part=$((part+1))
+	echo "-------------------------===== Section $part =====-------------------------"
 ## Verify if 2 variable is equal	
-	
-	red=`tput setaf 1`
-	green=`tput setaf 2`
-	reset=`tput sgr0`
-	#echo "${red}red text ${green}green text${reset}"
 	
 	echo "And the final answer is .... :"
 	if [ "$calsum2" = "$firstline" ]; then
 
-	echo "${green}Sha256sum with compare hash is EQUAL${reset}"
+	echo "${green}████████████████████████████████████████${reset}"
+	echo "${green}██Sha256sum with compare hash is EQUAL██${reset}"
+	echo "${green}████████████████████████████████████████${reset}"
 	#echo "Sha256sum with compare hash is EQUAL"
 	else
-	
-	echo "${red}Sha256sum with compare hash ARE NOT equal${reset}"
+
+	echo "${red}█████████████████████████████████████████████${reset}"	
+	echo "${red}██Sha256sum with compare hash ARE NOT equal██${reset}"
+	echo "${red}█████████████████████████████████████████████${reset}"
 	#echo "Sha256sum with compare hash ARE NOT equal"
 	fi
 
 echo -------------------------========================-------------------------
-## Software lead out.
-	echo "Finish..."
+## Software lead-out.
+	echo "Finish... with numbers of actions : $part"
 	echo "This script take $(( SECONDS - start )) seconds to complete."
 	date=$(date -d@$(( SECONDS - start )) -u +%H:%M:%S)
 	echo "Time needed: $date"
@@ -220,33 +219,36 @@ echo -------------------------========================-------------------------
 	echo
 	echo "If a script takes LESS than 120 seconds to complete it will auto"
 	echo "terminate after 10 seconds"
-echo -------------------------========================-------------------------
+	echo
+
 ## Exit, wait or auto-quit.
 if [ $(( SECONDS - start )) -gt 120 ]
-	then
+then
 	echo "Script takes more than 120 seconds to complete."
-	echo Press ENTER key to exit !
-	echo -------------------------========================-------------------------
+	echo "Press ENTER key to exit !"
+	echo
+	echo "${yellow}████████████████████████████████ Finish ██████████████████████████████████${reset}"
 	read name
-	exit
-fi
+else
 	echo "Script takes less than 120 seconds to complete."
 	echo "Auto-quit in 10 sec. (You can press X)"
-	echo -------------------------========================-------------------------
+	echo
+	echo "${green}████████████████████████████████ Finish ██████████████████████████████████${reset}"
 	sleep 10
+fi
 	exit
 ## -----===== End of bash =====-----
-## End-user license agreement (eula)
 
+End-user license agreement (eula)
 	JUST DO WHAT YOU WANT WITH THE PUBLIC LICENSE
-
+	
 	Version 3.1415926532 (January 2022)
-
+	
 	TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-   
-	Everyone is permitted to copy and distribute verbatim or modified copies of
+   	
+   	Everyone is permitted to copy and distribute verbatim or modified copies of
 	this license document.
-
+	
 	As is customary and in compliance with current global and interplanetary
 	regulations, the author of these pages disclaims all liability for the
 	consequences of the advice given here, in particular in the event of partial
@@ -254,6 +256,6 @@ fi
 	warranty, electrocution, drowning, divorce, civil war, the effects of radiation
 	due to atomic fission, unexpected tax recalls or encounters with
 	extraterrestrial beings elsewhere.
-
+	
 	LostByteSoft no copyright or copyleft we are in the center.
 ## -----===== End of file =====-----

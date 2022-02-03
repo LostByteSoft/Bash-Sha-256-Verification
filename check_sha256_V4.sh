@@ -1,6 +1,18 @@
-echo --- Start of file ---
 #!/bin/bash
-printf '\033[8;43;132t'		# will resize the window to 132 x 43 characters.
+#!/usr/bin/ffmpeg
+## -----===== Start of bash =====-----
+	printf '\033[8;30;80t'		# will resize the window, if needed.
+	#printf '\033[8;40;75t'		# will resize the window, if needed.
+	#printf '\033[8;40;125t'		# will resize the window, if needed.
+	#printf '\033[8;50;200t'	# will resize the window, if needed.
+echo -------------------------========================-------------------------
+echo "Software lead-in"
+	start=$SECONDS
+	now=$(date +"%Y-%m-%d_%A_%I:%M:%S")
+	echo "Current time : $now"
+	echo
+	echo Version compiled on : Also serves as a version
+	echo 2022-02-02_Wednesday_08:15:14
 echo -----------------------------------------------------------------------------
 echo "Sha-256-sum verification, you will select 1 or 2 files"
 echo "Version 4"
