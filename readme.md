@@ -72,11 +72,7 @@ Consider V5 as best option. But all version is working fine.
 	
 -check_sha256_V5.sh
 
-	-Same as V4 but updated gui
-
--Check_sha512_V4.sh
-
-	Same as Check_sha256_V4.sh except for sha512.
+	-Same as V4 but updated gui.
 
 Screenshot of the version 4.
 ![Screenshot](Picture_8.jpg)
@@ -87,9 +83,7 @@ Specials & extras
 
 -create_sha256.sh
 
--create_sha512.sh
-
-	Ask for one file to hash and create *.sha256 or *.sha512 file. With correct name 
+	Ask for one file to hash and create *.sha256 file. With correct name 
 	and formatting. Only for one file
 
 -testfile.txt
