@@ -1,28 +1,52 @@
 #!/bin/bash
 #!/usr/bin/ffmpeg
 ## -----===== Start of bash =====-----
-	#printf '\033[8;30;80t'		# will resize the window, if needed.
-	printf '\033[8;40;80t'		# will resize the window, if needed.
-	#printf '\033[8;40;125t'	# will resize the window, if needed.
-	#printf '\033[8;50;200t'	# will resize the window, if needed.
-echo -------------------------========================-------------------------
-## Software lead-in
+	start=$SECONDS
+	## "NEVER remove dual ## in front of lines. Theses are code annotations."
+	## "You can test / remove single # for testing purpose."
+	#printf '\033[8;40;90t'		# will resize the window, if needed.
+	#printf '\033[8;40;100t'		# will resize the window, if needed.
+	printf '\033[8;40;130t'		# will resize the window, if needed.
+	#sleep 0.50
+	now=$(date +"%Y-%m-%d_%A_%H:%M:%S")
 	red=`tput setaf 1`
 	green=`tput setaf 2`
-	yellow=`tput setaf 3`
+	yellow=`tput setaf 11`
+	blue=`tput setaf 12`
 	reset=`tput sgr0`
-	start=$SECONDS
-	now=$(date +"%Y-%m-%d_%A_%I:%M:%S")
-	echo "Current time : $now"
 	echo
-	echo Version compiled on : Also serves as a version
-	echo 2022-02-03_Thursday_05:09:37
+
 echo -------------------------========================-------------------------
-## Software name, what is this, version, informations.
-	echo "check_sha256_V5"
+	## All variables 0 or 1
+	autoquit=0	# autoquit anyway to script takes LESS than 2 min to complete.
+	debug=0		# test debug
+	error=0		# test error
+	part=0		# don't change this value
+	noquit=1	# No quit after all operations.
+	random=$RANDOM	# Used for temp folders
+	echo "Software lead-in. LostByteSoft ; https://github.com/LostByteSoft"
+	echo
+	echo "Current time : $now"
+	echo "Common variables, you can changes theses variables as you wish to test."
+	echo
+	echo "Debug data : autoquit=$autoquit debug=$debug error=$error part=$part noquit=$noquit random=$random"
+
+echo -------------------------========================-------------------------
+sleep 0.50
+	echo "Color codes / Informations."
+	echo
+	echo  "${green}	████████████████     ALL OK / ACTIVE      ████████████████ ${reset}"
+	echo   "${blue}	████████████████      INFORMATION(S)      ████████████████ ${reset}"
+	echo "${yellow}	████████████████   ATTENTION / INACTIVE   ████████████████ ${reset}"
+	echo    "${red}	████████████████   FATAL ERROR / OFFLINE  ████████████████ ${reset}"
+	echo
+echo -------------------------========================-------------------------
+	echo Version compiled on : Also serves as a version
+	echo 2023-03-01_Wednesday_09:27:05
 echo
 	echo What it does ?
 	echo "Sha-256-sum verification, you will select 1 or 2 files"
+	echo "check_sha256_V5"
 echo
 	echo Informations :
 	echo "By LostByteSoft, no copyright or copyleft"
@@ -34,6 +58,7 @@ echo
 	echo "Version 2021-02-25 Original release"
 	echo "Version 2021-11-17 small update"
 	echo "Version 2022-01-23 - version 5"
+	echo "Version 2022-03-01 - version 5.1 - lead in lead out update"
 echo
 echo -------------------------========================-------------------------
 echo "Select filename using dialog !"
@@ -53,24 +78,41 @@ if test -z "$file"
 		echo "$file"
 fi
 echo -------------------------========================-------------------------
-echo "Input name, directory and output name : (Debug helper)"
+	echo "Input name, directory and output name : (Debug helper)"
+	echo
 ## Set working path.
+	BASEDIR=$(dirname "$0")
+	echo Basedir : "$BASEDIR"
 	dir=$(pwd)
-	echo Input file : "$file"
+## file or folder selected
 	echo "Working dir : "$dir""
+	echo Input file : "$file"
 	export VAR="$file"
+	echo
+## directory section
+	INPUT="$(dirname "${VAR}")"	
+	echo "Get the last Folder : ${INPUT##*/}"
 	echo Base directory : "$(dirname "${VAR}")"
 	echo Base name: "$(basename "${VAR}")"
+	echo
 ## Output file name
 	name=`echo "$file" | rev | cut -f 2- -d '.' | rev` ## remove extension
-	echo "Output file : "$name""
-echo -------------------------========================-------------------------
-## Variables, for program."
-	part=0
+	echo "Output name ext : "$name""
+	name1=`echo "$(basename "${VAR}")" | rev | cut -f 2- -d '.' | rev` ## remove extension
+	echo "Output name bis : "$name1""
+	
+	if [ "$debug" -eq "1" ]; then
+		echo
+		echo "${yellow}█████ DEBUG SLEEP (5 sec) █████${reset}"
+		echo
+		echo "Debug data : autoquit=$autoquit debug=$debug error=$error part=$part noquit=$noquit random=$random"
+		sleep 5
+		echo
+	fi
+echo
 
+echo -------------------------========================-------------------------
 ## The code program.
-	part=$((part+1))
-	echo "-------------------------===== Section $part =====-------------------------"
 ## Check if an .sha256 file exist and autoload	
 
 exist="$file".sha256""
@@ -85,9 +127,9 @@ else
 
 	echo sha256file = "$sha256file"
 
-		part=$((part+1))
-	echo "-------------------------===== Section $part =====-------------------------"
-	## If you press cancel on load you will create a new sha256 file
+part=$((part+1))
+echo "-------------------------===== Section $part =====-------------------------"
+## If you press cancel on load you will create a new sha256 file
 
 	{
 	if test -z "$sha256file"
@@ -117,11 +159,11 @@ else
 
 fi
 
-echo sha256file = $sha256file
+	echo sha256file = "$sha256file"
 
-	part=$((part+1))
-	echo "-------------------------===== Section $part =====-------------------------"
-# read all lines
+part=$((part+1))
+echo "-------------------------===== Section $part =====-------------------------"
+	# read all lines
 	echo "All the lines in the file you provide."
 	input="$sha256file"
 	while IFS= read -r line
@@ -129,9 +171,9 @@ echo sha256file = $sha256file
 	echo "$line"
 	done < "$input"
 
-	part=$((part+1))
-	echo "-------------------------===== Section $part =====-------------------------"
-#put the good line in the variable firstline
+part=$((part+1))
+echo "-------------------------===== Section $part =====-------------------------"
+	#put the good line in the variable firstline
 	echo Input file : "$file"
 	echo "Working dir : "$dir""
 	export VAR2="$file"
@@ -160,8 +202,8 @@ echo sha256file = $sha256file
 			fi
 	}
 
-	part=$((part+1))
-	echo "-------------------------===== Section $part =====-------------------------"
+part=$((part+1))
+echo "-------------------------===== Section $part =====-------------------------"
 #two file have ben provided.
 
 	## DEBUG echo
@@ -173,7 +215,7 @@ echo sha256file = $sha256file
 	sha256sum "$file" | awk '{print $1}' > "/dev/shm/"$(basename "${VAR2}")".sha256"
 	read -r calsum<"/dev/shm/"$(basename "${VAR2}")".sha256"
 	echo "Your selected file for hash is : "
-	echo $file
+	echo "$file"
 	echo "The ckeck sum calculated is :"
 	echo calsum = "$calsum"
 	echo "$calsum $(basename "${VAR2}")" > "/dev/shm/"$(basename  "${VAR2}")".sha256"
@@ -185,8 +227,8 @@ echo sha256file = $sha256file
 	echo calsum2.. = "$calsum2"
 	echo firstline = "$firstline"
 
-	part=$((part+1))
-	echo "-------------------------===== Section $part =====-------------------------"
+part=$((part+1))
+echo "-------------------------===== Section $part =====-------------------------"
 ## Verify if 2 variable is equal	
 	
 	echo "And the final answer is .... :"
@@ -205,58 +247,102 @@ echo sha256file = $sha256file
 	fi
 
 echo -------------------------========================-------------------------
-## Software lead-out.
+## Software lead out
 	echo "Finish... with numbers of actions : $part"
 	echo "This script take $(( SECONDS - start )) seconds to complete."
 	date=$(date -d@$(( SECONDS - start )) -u +%H:%M:%S)
 	echo "Time needed: $date"
 	now=$(date +"%Y-%m-%d_%A_%I:%M:%S")
 	echo "Current time : $now"
+	echo
+
 echo -------------------------========================-------------------------
-## Press enter or auto-quit here.
-	echo "If a script takes MORE than 120 seconds to complete it will ask you to"
-	echo "press ENTER to terminate."
+	echo "If a script takes MORE than 120 seconds to complete it will ask"
+	echo "you to press ENTER to terminate."
 	echo
 	echo "If a script takes LESS than 120 seconds to complete it will auto"
 	echo "terminate after 10 seconds"
-	echo
 
+echo -------------------------========================-------------------------
 ## Exit, wait or auto-quit.
-if [ $(( SECONDS - start )) -gt 120 ]
-then
-	echo "Script takes more than 120 seconds to complete."
-	echo "Press ENTER key to exit !"
-	echo
-	echo "${yellow}████████████████████████████████ Finish ██████████████████████████████████${reset}"
-	read name
-else
-	echo "Script takes less than 120 seconds to complete."
-	echo "Auto-quit in 10 sec. (You can press X)"
-	echo
-	echo "${green}████████████████████████████████ Finish ██████████████████████████████████${reset}"
-	sleep 10
-fi
+	if [ "$noquit" -eq "1" ]; then
+		echo
+		echo "${blue}	█████████████████ NO exit activated ███████████████████${reset}"
+		echo
+		read -n 1 -s -r -p "Press ENTER key to exit !"
+		exit
+		fi
+
+	if [ "$autoquit" -eq "1" ]
+		then
+			echo
+			echo "${green}	███████████████ Finish, quit in 3 seconds █████████████████${reset}"
+			echo
+			sleep 2
+			echo
+		else
+		{
+			if [ "$debug" -eq "1" ]; then
+				echo
+				echo "${blue}		█████ DEBUG WAIT | Program finish. █████${reset}"
+				echo
+				echo "Debug data : autoquit=$autoquit debug=$debug error=$error part=$part noquit=$noquit random=$random"
+				echo
+				read -n 1 -s -r -p "Press ENTER key to continue !"
+				echo
+			fi
+		if [ $(( SECONDS - start )) -gt 120 ]
+			then
+				echo
+				echo "Script takes more than 120 seconds to complete."
+				echo
+				echo "${blue}	█████████████████████ Finish ███████████████████████${reset}"
+				echo
+				read -n 1 -s -r -p "Press ENTER key to exit !"
+				echo
+			else
+				echo
+				echo "Script takes less than 120 seconds to complete."
+				echo
+				echo "${green}	█████████████████████ Finish ███████████████████████${reset}"
+				echo
+				echo "Auto-quit in 3 sec. (You can press X)"
+				echo
+				sleep 3
+			fi
+		}
+		fi
 	exit
+
 ## -----===== End of bash =====-----
 
-End-user license agreement (eula)
-	JUST DO WHAT YOU WANT WITH THE PUBLIC LICENSE
-	
-	Version 3.1415926532 (January 2022)
-	
-	TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-   	
-   	Everyone is permitted to copy and distribute verbatim or modified copies of
-	this license document.
-	
-	As is customary and in compliance with current global and interplanetary
-	regulations, the author of these pages disclaims all liability for the
-	consequences of the advice given here, in particular in the event of partial
-	or total destruction of the material, Loss of rights to the manufacturer
-	warranty, electrocution, drowning, divorce, civil war, the effects of radiation
-	due to atomic fission, unexpected tax recalls or encounters with
-	extraterrestrial beings elsewhere.
-	
-	LostByteSoft no copyright or copyleft we are in the center.
-## -----===== End of file =====-----
+	End-user license agreement (eula)
 
+ 	JUST DO WHAT THE F*** YOU WANT WITH THE PUBLIC LICENSE
+ 	
+ 	Version 3.1415926532 (January 2022)
+ 	
+ 	TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+    	
+	Everyone is permitted to copy and distribute verbatim or modified copies of
+ 	this license document.
+ 	
+ 	As is customary and in compliance with current global and interplanetary
+ 	regulations, the author of these pages disclaims all liability for the
+ 	consequences of the advice given here, in particular in the event of partial
+ 	or total destruction of the material, Loss of rights to the manufacturer
+ 	warranty, electrocution, drowning, divorce, civil war, the effects of radiation
+ 	due to atomic fission, unexpected tax recalls or encounters with
+ 	extraterrestrial beings elsewhere.
+ 	
+ 	YOU MUST ACCEPT THESES TERMS OR NOTHING WILL HAPPEN.
+ 	
+ 	LostByteSoft no copyright or copyleft we are in the center.
+ 	
+ 	You can send your request and your Christmas wishes to this address:
+ 	
+ 		Père Noël
+ 		Pôle Nord, Canada
+ 		H0H 0H0
+
+## -----===== End of file =====-----

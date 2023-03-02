@@ -26,6 +26,7 @@ echo ---------------------------------------------------------------------------
 
 echo ${green}Must be placed in the folder you want to make sha fileS.${reset}
 echo ${red}!!! Carefull will be created a new sha file for EACH fileS !!!${reset}
+echo CREATE SHA256 FILE FOR THIS FOLDER
 echo press ENTER to continue!
 
 echo -----------------------------------------------------------------------------
