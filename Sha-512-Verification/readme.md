@@ -58,7 +58,7 @@ Specials & extras
 	
 
 
-![Screenshot](info1.jpg)
+![Screenshot](info1.png)
 
 FREE Linux Bash software by LostByteSoft
 
