@@ -76,7 +76,7 @@ Consider V5 as best option. But all version is working fine.
 
 
 Screenshot of the version 4.
-![Screenshot](Picture_8.jpg)
+![Screenshot](img/Picture_8.jpg)
 
 
 Specials & extras
@@ -125,22 +125,22 @@ Old versions
 
 Version 2021-01-29
 
-![Screenshot](Picture_5.jpg)
+![Screenshot](img/Picture_5.jpg)
 
 
 Version 2021-02-10
 
-![Screenshot](Picture_6.jpg)
+![Screenshot](img/Picture_6.jpg)
 
 
 Version 2021-02-14
 
-![Screenshot](Picture_7.jpg)
+![Screenshot](img/Picture_7.jpg)
 
 
 Version 2021-02-14 (check_sha256_V5,1.sh)
 
-![Screenshot](Picture_9.png)
+![Screenshot](img/Picture_9.png)
 
 --------------------------------------------------------------------
 
