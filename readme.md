@@ -1,5 +1,5 @@
 
-Check/compare bash : HASH md5 sha256 sha384 sha512
+Check/compare/create bash : HASH md5 sha256 sha384 sha512
 --------------------------------------------------------------------
 
 FREE Linux Bash software by LostByteSoft
@@ -8,6 +8,9 @@ No CopyRIGHT or CopyLEFT, i am juste in the CopyCENTER. That not perfect but me 
 
 Easy way or not in bash to verify create and hash for files and folders.
 
+Crc32 b2sum , cksum , sum , Sha1 (Sha are the same as Sha1) and Sha224 are not included but if you want it just ask !
+
+Tested and created in Linux Debian Cinnamon 12
 
 Files and use , MD5
 --------------------------------------------------------------------
@@ -36,6 +39,8 @@ create_md5_1_file_V_XXX.sh
 
 Files and use , SHA256
 --------------------------------------------------------------------
+
+Secure Hash Algorithms
 
 Consider V5 as best option. But all version is working fine.
 
