@@ -12,6 +12,8 @@ Crc32 b2sum , cksum , sum , Sha1 (Sha are the same as Sha1) and Sha224 are not i
 
 Tested and created in Linux Debian Cinnamon 12
 
+IF YOU RENAME FILES BE SURE TO RENAME THE FILE IN HASH SUM TOO.
+
 Files and use , MD5
 --------------------------------------------------------------------
 
