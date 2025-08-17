@@ -1,1 +1,0 @@
-bash hash sha512
