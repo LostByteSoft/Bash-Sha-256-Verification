@@ -14,10 +14,14 @@ Tested and created in Linux Debian Cinnamon 12
 
 IF YOU RENAME FILES BE SURE TO RENAME THE FILE IN HASH SUM TOO.
 
-Files and use , MD5
+THERE ARE NOT OPTION TO VERIFY ALL FILES.
+
+Udpadted on 2025-10-13
+
+Files and use , ALL FILES
 --------------------------------------------------------------------
 
-check_md5_V5,3_V_XXX.sh
+check_HASH_V6_XXX.sh
 
 	The main software. Will ask for 1 files (and check if hash file exist then autoload
 	OR ask for a second file WITH MULTIPLE HASH INSIDE and compare the hash include in the second specified/automatic
@@ -30,149 +34,21 @@ check_md5_V5,3_V_XXX.sh
 	-If you provide a hash file with multiple hash inside it will take the good line.
 
 
-create_md5_folder_V3,2_V_XXX.sh
+create_HASH_folder_V6_XXX.sh
 
-	Create for a specified folder you selected all *.md5 file. Will create ONLY ONE file 
-	for EACH file to hash.
+	Create for a specified folder you specify.
 
-create_md5_1_file_V_XXX.sh
+create_HASH_1_file_V6_XXX.sh
 
 	Create md5 for 1 file.
 
-Files and use , SHA256
---------------------------------------------------------------------
+Check_HASH_folder_V6_XXX.sh
 
-Secure Hash Algorithms
+	HAsh an entire folder with an HASH.sum file.
 
-Consider V5 as best option. But all version is working fine.
-
--Check_sha256_V1.sh
-
-	The main software. Will ask for 2 files, one after another, and compare the hash
-	include in the second specified file.
-	
-	-ask for 2 file (You must fournish 2 files)
-
--Check_sha256_V2.sh
-
-	The main software. Will ask for 1 files (and check if hash file exist then
-	autoload OR ask for a second file and compare the hash include in the second specified/automatic
-	file.
-	
-	-ask for 1 file
-	-watch if *.sha256 exist and load (of the same name *.sha256)
-	-if not exist, ask for a hash file (*.sha256 *.txt).
-	
--Check_sha256_V3.sh
-
-	The main software. Will ask for 1 files (and check if hash file exist then autoload
-	OR ask for a second file and compare the hash include in the second specified/automatic
-	file OR (if you click cancel) offer to create new sha256 file.
-	
-	-ask for 1 file
-	-watch if *.sha256 exist and load (of the same name *.sha256)	
-	-if not exist, ask for a hash file (*.sha256 *.txt).
-	-If you don't provide a file will create a new *.sha256 file.
-	
--Check_sha256_V4.sh
-
-	The main software. Will ask for 1 files (and check if hash file exist then autoload
-	OR ask for a second file WITH MULTIPLE HASH INSIDE and compare the hash include in the second specified/automatic
-	file OR (if you click cancel) offer to create new sha256 file.
-	
-	-ask for 1 file
-	-watch if *.sha256 exist and load (of the same name *.sha256)	
-	-if not exist, ask for a hash file (*.sha256 *.txt).
-	-If you don't provide a file will create a new *.sha256 file.
-	-If you provide a hash file with multiple hash inside it will take the good line.
-	
--check_sha256_V5,2_V_XXX.sh
-
-	-Same as V4 but updated gui.
-
--check_sha256_V5,3_V_XXX.sh
-
-	-Same as V5,2 but updated gui and software.
-
-
-Screenshot of the version 4.
 ![Screenshot](images/Picture_8.jpg)
 
-
-create_sha256_1_file_V_XXX.sh
-
-	Create sha256 for 1 file.
-
-
-create_sha256_folder_V1.sh
-
-	NEED to put in the folder you want create for a specified folder all *.sha256 file.
-	Will create a new file for EACH file to hash.
-
-create_sha256_folder_V2.sh
-
-	Create for a specified folder you selected all *.sha256 file. Will create a new file 
-	for EACH file to hash.
-	
-create_sha256_folder_V3.sh
-
-	Create for a specified folder you selected all *.sha256 file. Will create ONLY ONE file 
-	for EACH file to hash.
-
-create_sha256_folder_V3,2_V_XXX.sh
-
-	Create for a specified folder you selected all *.sha256 file. Will create ONLY ONE file 
-	for EACH file to hash.
-
-Files and use , SHA384
---------------------------------------------------------------------
-
-check_sha384_V5,3_V_XXX.sh
-
-	The main software. Will ask for 1 files (and check if hash file exist then autoload
-	OR ask for a second file WITH MULTIPLE HASH INSIDE and compare the hash include in the second specified/automatic
-	file OR (if you click cancel) offer to create new sha384 file.
-	
-	-ask for 1 file
-	-watch if *.sha384 exist and load (of the same name *.sha384)	
-	-if not exist, ask for a hash file (*.sha384 *.txt).
-	-If you don't provide a file will create a new *.sha384 file.
-	-If you provide a hash file with multiple hash inside it will take the good line.
-
-create_sha384_folder_V3,2_V_XXX.sh
-
-	Create for a specified folder you selected all *.sha384 file. Will create ONLY ONE file 
-	for EACH file to hash.
-
-create_sha384_1_file_V_XXX.sh
-
-	Create sha384 for 1 file.
-
-Files and use , SHA512
---------------------------------------------------------------------
-
-check_sha512_V5,3_V_XXX.sh
-
-	The main software. Will ask for 1 files (and check if hash file exist then autoload
-	OR ask for a second file WITH MULTIPLE HASH INSIDE and compare the hash include in the second specified/automatic
-	file OR (if you click cancel) offer to create new sha512 file.
-	
-	-ask for 1 file
-	-watch if *.sha512 exist and load (of the same name *.sha512)	
-	-if not exist, ask for a hash file (*.sha512 *.txt).
-	-If you don't provide a file will create a new *.sha512 file.
-	-If you provide a hash file with multiple hash inside it will take the good line.
-
 ![Screenshot](images/sha512.png)
-
-create_sha512_folder_V3,2_V_XXX.sh
-
-	Create for a specified folder you selected all *.sha512 file. Will create ONLY ONE file 
-	for EACH file to hash.
-
-create_sha512_1_file_V_XXX.sh
-
-	Create sha512 for 1 file.
 
 
 Specials & extras
@@ -192,7 +68,7 @@ testfile.txt.sha256sum
 	 Only the first line is revelant for now.
 
 
-
+shasum sha1sum & sha224sum are included with Debian
 
 
 FREE Linux Bash software by LostByteSoft
@@ -200,23 +76,13 @@ FREE Linux Bash software by LostByteSoft
 Old versions
 --------------------------------------------------------------------
 
-
-Version 2021-01-29
+![Screenshot](images/2025-05.jpg)
 
 ![Screenshot](images/Picture_5.jpg)
 
-
-Version 2021-02-10
-
 ![Screenshot](images/Picture_6.jpg)
 
-
-Version 2021-02-14
-
 ![Screenshot](images/Picture_7.jpg)
-
-
-Version 2021-02-14 (check_sha256_V5,1.sh)
 
 ![Screenshot](images/Picture_9.png)
 
