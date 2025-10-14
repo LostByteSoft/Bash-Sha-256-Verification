@@ -51,6 +51,26 @@ Check_HASH_folder_V6_XXX.sh
 ![Screenshot](images/sha512.png)
 
 
+Converter(s)
+--------------------------------------------------------------------
+
+Convert_md5_to_md5sum_V_6_202510141818.sh
+
+	Converter for bad formatted md5 sums as https://en.wikipedia.org/wiki/Md5sum suggest.
+	
+	Select one file and convert all lines.
+
+	Exemple: Convert the first line of the file to the second line, in the same folder.
+	
+	Will create a new file (allo.md5 To allo.md5sums).
+	
+	adabcdefe888c2c38a8f8aebe2345678 *..\1234.bin
+	
+	adabcdefe888c2c38a8f8aebe2345678 ./1234.bin
+	
+![Screenshot](images/Picture_10.png)
+
+
 Specials & extras
 --------------------------------------------------------------------
 
