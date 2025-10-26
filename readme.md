@@ -8,18 +8,19 @@ No CopyRIGHT or CopyLEFT, i am juste in the CopyCENTER. That not perfect but me 
 
 Easy way or not in bash to verify create and hash for files and folders.
 
-Crc32 b2sum , cksum , sum , Sha1 (Sha are the same as Sha1) and Sha224 are not included but if you want it just ask !
+Crc32 b2sum , cksum , sum , Sha1 (Sha are the same as Sha1) , sha224 and sha384 are not included but if you want it just ask !
 
-Tested and created in Linux Debian Cinnamon 12
+Created in Linux Debian Cinnamon 12
 
-IF YOU RENAME FILES BE SURE TO RENAME THE FILE IN HASH SUM TOO.
+Tested in Debian Cinnamon 12 & 13 , mint 22.2 and LMDE 7
 
-THERE ARE NOT OPTION TO VERIFY ALL FILES.
+Udpadted on 2025-10-26-13-21-40
 
-Udpadted on 2025-10-13
-
-Files and use , ALL FILES
+Files and use , main software
 --------------------------------------------------------------------
+
+Hash : md5 , sha256 , sha512
+
 
 check_HASH_V6_XXX.sh
 
@@ -36,7 +37,7 @@ check_HASH_V6_XXX.sh
 
 create_HASH_folder_V6_XXX.sh
 
-	Create for a specified folder you specify.
+	Create for a specified folder you select.
 
 create_HASH_1_file_V6_XXX.sh
 
@@ -50,11 +51,32 @@ Check_HASH_folder_V6_XXX.sh
 
 ![Screenshot](images/sha512.png)
 
+Files and use , other files
+--------------------------------------------------------------------
+
+Hash ONE FILE ONLY : crc32 , sha224 , sha384
+
+Check_crc32_1_file_V6_2025XXXX.sh
+
+Check_sha224_1_file_V6_2025XXXX.sh
+
+Check_sha384_1_file_V6_2025XXXX.sh
+
+	The main software. Will ask for 1 files (and check if hash file exist then autoload
+	OR ask for a second file WITH MULTIPLE HASH INSIDE and compare the hash include in the second specified/automatic
+	file OR (if you click cancel) offer to create new md5 file.
+	
+	-ask for 1 file
+	-watch if *.md5 exist and load (of the same name *.md5)	
+	-if not exist, ask for a hash file (*.md5 *.txt).
+	-If you don't provide a file will create a new *.md5 file.
+	-If you provide a hash file with multiple hash inside it will take the good line.
+
 
 Converter(s)
 --------------------------------------------------------------------
 
-Convert_md5_to_md5sum_V_6_202510141818.sh
+Convert_md5_to_md5sum_V6_2025XXXXXXX.sh
 
 	Converter for bad formatted md5 sums as https://en.wikipedia.org/wiki/Md5sum suggest.
 	
@@ -88,7 +110,7 @@ testfile.txt.sha256sum
 	 Only the first line is revelant for now.
 
 
-shasum sha1sum & sha224sum are included with Debian
+
 
 
 FREE Linux Bash software by LostByteSoft
