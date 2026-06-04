@@ -10,11 +10,11 @@ Easy way or not in bash to verify create and hash for files and folders.
 
 Crc32 b2sum , cksum , sum , Sha1 (Sha are the same as Sha1) , sha224 and sha384 are not included but if you want it just ask !
 
-Created in Linux Debian Cinnamon 12
+Created in Linux Debian Cinnamon 13
 
-Tested in Debian Cinnamon 12 & 13 , mint 22.2 and LMDE 7
+Tested in Debian Cinnamon 13 14 , mint 22.3 and LMDE 7
 
-Udpadted on 2025-10-26-13-21-40
+Udpadted on 2026-06-04
 
 Files and use , main software
 --------------------------------------------------------------------
